@@ -12,13 +12,16 @@ The main objective of this week is to develop the MVP feature set listed below u
 
 ## Trello Set Up:
 
-- [X] Create a Trello account
-- [X] Create a new board called "Lambda Notes - {Your Name}"
-- [X] Create lists titled `backlog`,`To Do`, `In Progress`, and `Done`
-- [X] Fill in the `To Do` list with the MVP features listed below
-- [X] Fill in the `backlog` list with all the extra features listed below
-- [X] Share your board with the project manager that has been assigned to you. If you have not been assigned yet, reach out to your lead PM for guidance
-- [X] Add your Trello URL to your project's README.md file. Commit the change, push it to your repository & submit a pull request
+Trello -
+https://trello.com/b/fqb0OBTU/lambda-notes-noah-stoeckel
+
+- [x] Create a Trello account
+- [x] Create a new board called "Lambda Notes - {Your Name}"
+- [x] Create lists titled `backlog`,`To Do`, `In Progress`, and `Done`
+- [x] Fill in the `To Do` list with the MVP features listed below
+- [x] Fill in the `backlog` list with all the extra features listed below
+- [x] Share your board with the project manager that has been assigned to you. If you have not been assigned yet, reach out to your lead PM for guidance
+- [x] Add your Trello URL to your project's README.md file. Commit the change, push it to your repository & submit a pull request
 
 ## MVP Features:
 
