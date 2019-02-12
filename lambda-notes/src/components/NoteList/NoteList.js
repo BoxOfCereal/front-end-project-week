@@ -1,11 +1,11 @@
 import React from "react";
-import Note from "../index";
+import NoteCard from "../index";
 
 const NoteList = props => {
   return (
     <div>
       {props.notes.map(note => (
-        <Note key={note.id} {...note} />
+        <NoteCard key={note.id} {...note} />
       ))}
     </div>
   );
