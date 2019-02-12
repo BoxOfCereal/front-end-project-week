@@ -1,5 +1,5 @@
 import React from "react";
-import NoteCard from "../index";
+import { NoteCard } from "../index";
 
 const NoteList = props => {
   return (
