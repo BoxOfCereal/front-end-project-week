@@ -29,6 +29,10 @@ class App extends Component {
     return (
       <div className="App">
         <Route path="/" component={SideBar} />
+        <Route
+          path="/"
+          render={props => <ListView notes={this.state.notes} />}
+        />
       </div>
     );
   }
