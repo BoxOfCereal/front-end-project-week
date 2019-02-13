@@ -10,6 +10,7 @@ class App extends Component {
     super();
     this.state = {
       notes: [],
+      editedNote: "",
       error: ""
     };
   }
@@ -60,8 +61,18 @@ class App extends Component {
     axios
       .put(`https://fe-notes.herokuapp.com/note/edit/${_id}`, note)
       .then(({ data }) => {
-        this.setState({ note: data });
+        this.setState({ editedNote: data });
         console.log(this.state.note);
+      })
+      .catch(error => this.setState({ error: error }));
+  };
+
+  deleteNote = _id => {
+    axios
+      .delete(`https://fe-notes.herokuapp.com/note/delete/${_id}`)
+      .then(({ data: { success } }) => {
+        this.setState({ message: success });
+        console.log(this.state.message);
       })
       .catch(error => this.setState({ error: error }));
   };
@@ -70,6 +81,7 @@ class App extends Component {
     return (
       <div className="App">
         <Route path="/" component={SideBar} />
+
         <Route
           path="/"
           render={props => <ListView notes={this.state.notes} />}
@@ -92,7 +104,14 @@ class App extends Component {
             });
           }}
         >
-          DELETE
+          EDIT
+        </button> */}
+        {/* <button
+          onClick={() => {
+            this.deleteNote("5c636979b3638b00153d4e52");
+          }}
+        >
+          Delete
         </button> */}
       </div>
     );
