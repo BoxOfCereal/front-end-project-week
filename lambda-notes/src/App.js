@@ -38,11 +38,17 @@ class App extends Component {
       .catch(error => this.setState({ error: error }));
   };
 
-  // a `POST` request to this route with the title and text in the req.body will create a new note. The response from the server will be the ID of the new note.
+  /* a `POST` request to this route with the title and text in the req.body 
+    will create a new note. 
+    The response from the server will be the ID of the new note.
+  */
   createNote = note => {
     axios
       .post(`https://fe-notes.herokuapp.com/note/create`, note)
-      .then(({ data }) => this.setState({ notes: data }))
+      .then(({ data }) => {
+        console.log(data);
+        this.setState({ newNoteId: data });
+      })
       .catch(error => this.setState({ error: error }));
   };
 
@@ -53,6 +59,15 @@ class App extends Component {
         <Route
           path="/"
           render={props => <ListView notes={this.state.notes} />}
+        />
+        <button
+          onClick={() => {
+            this.createNote({
+              tags: ["tag", "otherTag"],
+              title: "Note Title",
+              textBody: "Note Body"
+            });
+          }}
         />
       </div>
     );
