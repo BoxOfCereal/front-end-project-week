@@ -25,6 +25,13 @@ class App extends Component {
       .catch(error => this.setState({ error: error }));
   };
 
+  createNote = note => {
+    axios
+      .post(`https://fe-notes.herokuapp.com/note/create`, note)
+      .then(({ data }) => this.setState({ notes: data }))
+      .catch(error => this.setState({ error: error }));
+  };
+
   render() {
     return (
       <div className="App">
