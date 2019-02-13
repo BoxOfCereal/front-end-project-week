@@ -1,13 +1,14 @@
 import React from "react";
 import { NoteCard } from "../index";
+import { NoteCardsWrapper } from "../../styles";
 
 const NoteList = props => {
   return (
-    <div>
+    <NoteCardsWrapper>
       {props.notes.map(note => (
         <NoteCard key={note.id} {...note} />
       ))}
-    </div>
+    </NoteCardsWrapper>
   );
 };
 

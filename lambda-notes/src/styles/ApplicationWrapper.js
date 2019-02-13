@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+//  wraps the whole application this goes in App.js
 const ApplicationWrapper = styled.div`
   /*sidebar  */
   > div {
