@@ -1,9 +1,18 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
+import styled from "styled-components";
 import "./App.css";
 import { SideBar } from "./components";
 import { ListView } from "./views";
+
+const ApplicationWrapper = styled.div`
+  > div {
+    background: red;
+    position: fixed;
+    height: 100%;
+  }
+`;
 
 class App extends Component {
   constructor() {
@@ -79,7 +88,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <ApplicationWrapper>
         <Route path="/" component={SideBar} />
 
         <Route
@@ -113,7 +122,7 @@ class App extends Component {
         >
           Delete
         </button> */}
-      </div>
+      </ApplicationWrapper>
     );
   }
 }
