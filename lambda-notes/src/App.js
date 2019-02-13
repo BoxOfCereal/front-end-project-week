@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
 
-import { SideBar } from "./components";
+import { SideBar, TopBar } from "./components";
 import { ListView } from "./views";
 import { ApplicationWrapper } from "./styles/index";
 
@@ -82,6 +82,7 @@ class App extends Component {
     return (
       <ApplicationWrapper>
         <Route path="/" component={SideBar} />
+        <Route path="/" component={TopBar} />
 
         <Route
           path="/"
