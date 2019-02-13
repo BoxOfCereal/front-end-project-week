@@ -16,12 +16,23 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchNotes();
+    // this.fetchNote("5c6250dae3d19000159d2587");
   }
 
   fetchNotes = () => {
     axios
       .get(`https://fe-notes.herokuapp.com/note/get/all`)
-      .then(({ data }) => this.setState({ notes: data }))
+      .then(({ data }) => {
+        console.log(data);
+        this.setState({ notes: data });
+      })
+      .catch(error => this.setState({ error: error }));
+  };
+
+  fetchNote = _id => {
+    axios
+      .get(`https://fe-notes.herokuapp.com/note/get/${_id}`)
+      .then(({ data }) => this.setState({ notes: [data] }))
       .catch(error => this.setState({ error: error }));
   };
 
