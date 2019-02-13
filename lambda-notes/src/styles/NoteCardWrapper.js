@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+//  Wraps Each Individual Card, used in NoteCard Component
 const NoteCardWrapper = styled.div`
   border: 1px solid black;
   padding: 10px;
