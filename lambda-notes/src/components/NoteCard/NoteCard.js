@@ -1,13 +1,14 @@
 import React from "react";
+import { NoteCardWrapper } from "../../styles";
 
-const Note = props => {
+const NoteCard = props => {
   return (
-    <div>
+    <NoteCardWrapper>
       <h3>{props.title}</h3>
-      <br />
+      <hr />
       <p>{props.textBody}</p>
-    </div>
+    </NoteCardWrapper>
   );
 };
 
-export default Note;
+export default NoteCard;
