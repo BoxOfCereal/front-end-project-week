@@ -52,6 +52,20 @@ class App extends Component {
       .catch(error => this.setState({ error: error }));
   };
 
+  /*a `PUT` request to this route with the title and text in the 
+    req body will edit the note with the specified ID. 
+    The response from the server will be the updated note object.
+  */
+  editNote = (_id, note) => {
+    axios
+      .put(`https://fe-notes.herokuapp.com/note/edit/${_id}`, note)
+      .then(({ data }) => {
+        this.setState({ note: data });
+        console.log(this.state.note);
+      })
+      .catch(error => this.setState({ error: error }));
+  };
+
   render() {
     return (
       <div className="App">
@@ -60,7 +74,7 @@ class App extends Component {
           path="/"
           render={props => <ListView notes={this.state.notes} />}
         />
-        <button
+        {/* <button
           onClick={() => {
             this.createNote({
               tags: ["tag", "otherTag"],
@@ -68,7 +82,18 @@ class App extends Component {
               textBody: "Note Body"
             });
           }}
-        />
+        /> */}
+        {/* <button
+          onClick={() => {
+            this.editNote("5c63735eb3638b00153d4e59", {
+              title: "delete all of these",
+              textBody: "no really feel free to delete all of these",
+              tags: []
+            });
+          }}
+        >
+          DELETE
+        </button> */}
       </div>
     );
   }
