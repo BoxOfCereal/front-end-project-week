@@ -19,6 +19,7 @@ class App extends Component {
     // this.fetchNote("5c6250dae3d19000159d2587");
   }
 
+  // a `GET` request to this route will return a list of all the notes.
   fetchNotes = () => {
     axios
       .get(`https://fe-notes.herokuapp.com/note/get/all`)
@@ -29,6 +30,7 @@ class App extends Component {
       .catch(error => this.setState({ error: error }));
   };
 
+  // a `GET` request to this route (with "id" replaced by the note ID) will return the note with the specified ID.
   fetchNote = _id => {
     axios
       .get(`https://fe-notes.herokuapp.com/note/get/${_id}`)
@@ -36,6 +38,7 @@ class App extends Component {
       .catch(error => this.setState({ error: error }));
   };
 
+  // a `POST` request to this route with the title and text in the req.body will create a new note. The response from the server will be the ID of the new note.
   createNote = note => {
     axios
       .post(`https://fe-notes.herokuapp.com/note/create`, note)
