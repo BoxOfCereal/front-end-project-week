@@ -74,8 +74,10 @@ class App extends Component {
     axios
       .delete(`https://fe-notes.herokuapp.com/note/delete/${_id}`)
       .then(({ data: { success } }) => {
-        this.setState({ message: success });
-        console.log(this.state.message);
+        this.setState({
+          message: success,
+          notes: this.state.notes.filter(note => note._id !== _id)
+        });
       })
       .catch(error => this.setState({ error: error }));
   };
@@ -108,7 +110,13 @@ class App extends Component {
             />
           )}
         />
-        <Route exact path="/note/:id/delete" component={DeleteModal} />
+        <Route
+          exact
+          path="/note/:id/delete"
+          render={props => (
+            <DeleteModal deleteNote={this.deleteNote} {...props} />
+          )}
+        />
         {/* <button
           onClick={() => {
             this.createNote({

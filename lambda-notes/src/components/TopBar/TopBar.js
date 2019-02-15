@@ -3,6 +3,7 @@ import { Route, Link, withRouter } from "react-router-dom";
 
 import { TopBarTitle } from "../index";
 
+// This is a mess but I can't deal with it rn
 const routes = [
   {
     path: "/",
@@ -45,7 +46,6 @@ const TopBar = props => {
       />
       {routes.map((route, index) => (
         <Route
-          title="piss"
           key={index}
           path={route.path}
           exact={route.exact}
