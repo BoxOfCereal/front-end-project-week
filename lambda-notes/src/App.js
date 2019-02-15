@@ -49,6 +49,7 @@ class App extends Component {
       .post(`https://fe-notes.herokuapp.com/note/create`, note)
       .then(({ data }) => {
         console.log(data);
+        //concat new note to state
         this.setState({ newNoteId: data });
       })
       .catch(error => this.setState({ error: error }));
