@@ -11,6 +11,7 @@ class App extends Component {
     super();
     this.state = {
       notes: [],
+      note: "",
       editedNote: "",
       error: ""
     };
@@ -36,7 +37,7 @@ class App extends Component {
   fetchNote = _id => {
     axios
       .get(`https://fe-notes.herokuapp.com/note/get/${_id}`)
-      .then(({ data }) => this.setState({ notes: [data] }))
+      .then(({ data }) => this.setState({ ...this.state.note, note: data }))
       .catch(error => this.setState({ error: error }));
   };
 
@@ -91,7 +92,16 @@ class App extends Component {
           render={props => <ListView notes={this.state.notes} />}
         />
         <Route path="/create" render={props => <CreateNoteView />} />
-        <Route path="/note/:id" render={props => <NoteView />} />
+        <Route
+          path="/note/:id"
+          render={props => (
+            <NoteView
+              {...props}
+              fetchNote={this.fetchNote}
+              note={this.state.note}
+            />
+          )}
+        />
         {/* <button
           onClick={() => {
             this.createNote({

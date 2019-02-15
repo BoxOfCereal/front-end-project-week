@@ -4,7 +4,7 @@ import { Note } from "../../components";
 const NoteView = props => {
   return (
     <section>
-      <Note {...props.note} />
+      <Note {...props} />
     </section>
   );
 };
