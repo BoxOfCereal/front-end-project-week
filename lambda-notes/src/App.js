@@ -84,7 +84,10 @@ class App extends Component {
     return (
       <ApplicationWrapper>
         <Route path="/" component={SideBar} />
-        <Route path="/" component={TopBar} />
+        <Route
+          path="/"
+          render={props => <TopBar {...props} {...this.state} />}
+        />
 
         <Route
           path="/"
