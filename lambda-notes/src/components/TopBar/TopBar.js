@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 //https://reacttraining.com/react-router/web/example/sidebar
 const TopBar = props => {
@@ -7,19 +7,27 @@ const TopBar = props => {
     {
       path: "/",
       exact: true,
-      topbar: () => <h2>Your Notes:</h2>
+      TopBarContent: () => <h2>Your Notes:</h2>
     },
     {
       path: "/create",
-      topbar: () => <h2>Create New Note:</h2>
+      TopBarContent: () => <h2>Create New Note:</h2>
     },
     {
       path: "/note/:id",
-      topbar: () => <h2>{props.note.title}</h2>
+      exact: true,
+      TopBarContent: () => (
+        <div>
+          <h2>{props.note.title}</h2>
+          {/*  for what ever reason props.match.id is undefined */}
+          <Link to={`/note/${props._id}/edit`}>edit</Link>
+          <Link to={`/note/delete`}>delete</Link>
+        </div>
+      )
     },
     {
       path: "/note/:id/edit",
-      topbar: () => <h2>Edit Note:</h2>
+      TopBarContent: () => <h2>Edit Note:</h2>
     }
   ];
 
@@ -27,10 +35,11 @@ const TopBar = props => {
     <div>
       {routes.map((route, index) => (
         <Route
+          {...props}
           key={index}
           path={route.path}
           exact={route.exact}
-          component={route.topbar}
+          component={route.TopBarContent}
         />
       ))}
     </div>
