@@ -94,7 +94,10 @@ class App extends Component {
           exact
           render={props => <ListView notes={this.state.notes} />}
         />
-        <Route path="/create" render={props => <CreateNoteView />} />
+        <Route
+          path="/create"
+          render={props => <CreateNoteView createNote={this.createNote} />}
+        />
         <Route
           path="/note/:id"
           render={props => (

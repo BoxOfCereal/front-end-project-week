@@ -35,7 +35,6 @@ class Note extends React.Component {
   render() {
     return (
       <div>
-        <h3>{this.state.title}</h3>
         <p>{this.state.textBody}</p>
       </div>
     );

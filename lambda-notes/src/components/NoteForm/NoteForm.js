@@ -3,9 +3,11 @@ import React from "react";
 class NoteForm extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props);
     this.state = {
       title: "",
-      note: ""
+      textBody: "",
+      tags: []
     };
   }
 
@@ -15,8 +17,8 @@ class NoteForm extends React.Component {
 
   createNote = e => {
     e.preventDefault();
-    this.props.saveNote({ ...this.state });
-    this.setState({ name: "", age: "", email: "" });
+    this.props.createNote({ ...this.state });
+    this.setState({ title: "", textBody: "", tags: [] });
   };
 
   render() {
@@ -31,9 +33,9 @@ class NoteForm extends React.Component {
           />
           <input
             type="textarea"
-            name="note"
+            name="textBody"
             onChange={this.inputChange}
-            value={this.state.note}
+            value={this.state.textBody}
           />
           <button type="submit">Add A Note!</button>
         </form>
