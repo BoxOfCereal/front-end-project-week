@@ -5,3 +5,5 @@ export { default as NoteForm } from "./NoteForm/NoteForm";
 export { default as Button } from "./Button/Button";
 export { default as SideBar } from "./SideBar/SideBar";
 export { default as TopBar } from "./TopBar/TopBar";
+export { default as TopBarTitle } from "./TopBarTitle/TopBarTitle";
+export { default as DeleteModal } from "./DeleteModal/DeleteModal";

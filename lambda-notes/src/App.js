@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
 
-import { SideBar, TopBar } from "./components";
+import { SideBar, TopBar, DeleteModal } from "./components";
 import { ListView, CreateNoteView, NoteView } from "./views";
 import { ApplicationWrapper } from "./styles/index";
 
@@ -108,6 +108,7 @@ class App extends Component {
             />
           )}
         />
+        <Route exact path="/note/:id/delete" component={DeleteModal} />
         {/* <button
           onClick={() => {
             this.createNote({
