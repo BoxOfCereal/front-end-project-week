@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import axios from "axios";
 
 import { SideBar, TopBar } from "./components";
-import { ListView } from "./views";
+import { ListView, CreateNoteView } from "./views";
 import { ApplicationWrapper } from "./styles/index";
 
 class App extends Component {
@@ -87,8 +87,10 @@ class App extends Component {
 
         <Route
           path="/"
+          exact
           render={props => <ListView notes={this.state.notes} />}
         />
+        <Route path="/create" render={props => <CreateNoteView />} />
         {/* <button
           onClick={() => {
             this.createNote({
