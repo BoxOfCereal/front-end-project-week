@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Link, withRouter } from "react-router-dom";
 
 import { TopBarTitle } from "../index";
+import { TopBarWrapper } from "../../styles";
 
 // This is a mess but I can't deal with it rn
 const routes = [
@@ -39,7 +40,7 @@ const routes = [
 //https://reacttraining.com/react-router/web/example/sidebar
 const TopBar = props => {
   return (
-    <div>
+    <TopBarWrapper>
       <Route
         path={`/note/:id`}
         render={_ => <TopBarTitle title={props.title} {..._} />}
@@ -52,7 +53,7 @@ const TopBar = props => {
           component={withRouter(route.TopBarContent)}
         />
       ))}
-    </div>
+    </TopBarWrapper>
   );
 };
 
