@@ -22,10 +22,10 @@ const routes = [
 ];
 
 //https://reacttraining.com/react-router/web/example/sidebar
-const TopBar = (route, index) => {
+const TopBar = props => {
   return (
     <div>
-      {routes.map(route => (
+      {routes.map((route, index) => (
         <Route
           key={index}
           path={route.path}
