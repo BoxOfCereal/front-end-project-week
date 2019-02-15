@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { Button } from "../index";
+
 const FullScreenOverlay = styled.div`
   position: fixed;
   height: 100%;
@@ -42,21 +44,22 @@ const DeleteModal = props => {
     <FullScreenOverlay>
       <DeleteModalBox>
         <p>Are you sure you want to delete this?</p>
-        <button
+        <Button
+          warning
           onClick={() => {
             props.deleteNote(props.match.params.id);
             props.history.push(`/`);
           }}
         >
           Delete
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => {
             props.history.push(`/note/${props.match.params.id}`);
           }}
         >
           No
-        </button>
+        </Button>
       </DeleteModalBox>
     </FullScreenOverlay>
   );

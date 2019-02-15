@@ -7,10 +7,10 @@ const SideBar = props => {
     <nav>
       <h1>Lambda Notes</h1>
       <Link to="/">
-        <Button text={`View Your Notes`} />
+        <Button>View Your Notes</Button>
       </Link>
       <Link to="/create">
-        <Button text={`+ Create New Note`} />
+        <Button>+ Create New Note</Button>
       </Link>
     </nav>
   );
