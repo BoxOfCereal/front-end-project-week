@@ -7,17 +7,24 @@ const NoteCardWrapper = styled.div`
     ref: https://codepen.io/anon/pen/MPQZGB
    */
   word-wrap: break-word;
-
-  border: 1px solid black;
-  padding: 10px;
-  min-height: 200px;
   overflow: hidden;
+
+  & div {
+    border: 1px solid black;
+    padding: 10px;
+    min-height: 200px;
+  }
 
   & h3 {
     font-weight: bolder;
   }
   & p {
     font-size: 0.9rem;
+  }
+
+  & a {
+    text-decoration: none;
+    color: inherit;
   }
 `;
 
