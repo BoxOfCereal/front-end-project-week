@@ -12,7 +12,13 @@ const DeleteModal = props => {
       >
         Delete
       </button>
-      <button>No</button>
+      <button
+        onClick={() => {
+          props.history.push(`/note/${props.match.params.id}`);
+        }}
+      >
+        No
+      </button>
     </div>
   );
 };
