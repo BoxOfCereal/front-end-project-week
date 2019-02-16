@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../index";
+import { StyledNav } from "../../styles";
 
 const SideBar = props => {
   return (
-    <nav>
+    <StyledNav>
       <h1>Lambda Notes</h1>
       <Link to="/">
         <Button>View Your Notes</Button>
@@ -12,7 +13,7 @@ const SideBar = props => {
       <Link to="/create">
         <Button>+ Create New Note</Button>
       </Link>
-    </nav>
+    </StyledNav>
   );
 };
 
