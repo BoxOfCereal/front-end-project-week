@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import axios from "axios";
 
 import { SideBar, TopBar, DeleteModal } from "./components";
@@ -7,8 +7,8 @@ import { ListView, CreateNoteView, NoteView } from "./views";
 import { ApplicationWrapper } from "./styles/index";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       notes: [],
       note: "",
@@ -54,6 +54,7 @@ class App extends Component {
         this.setState({
           notes: [...this.state.notes, { ...note, _id: createdNoteId }]
         });
+        this.props.history.push(`/note/${createdNoteId}`);
       })
       .catch(error => this.setState({ error: error }));
   };
@@ -151,4 +152,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
