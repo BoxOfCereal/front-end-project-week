@@ -48,10 +48,12 @@ class App extends Component {
   createNote = note => {
     axios
       .post(`https://fe-notes.herokuapp.com/note/create`, note)
-      .then(({ data }) => {
-        console.log(data);
+      .then(({ data: { success: createdNoteId } }) => {
+        console.log(createdNoteId);
         //concat new note to state
-        this.setState({ newNoteId: data });
+        this.setState({
+          notes: [...this.state.notes, { ...note, _id: createdNoteId }]
+        });
       })
       .catch(error => this.setState({ error: error }));
   };
