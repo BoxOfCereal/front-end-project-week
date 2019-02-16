@@ -36,6 +36,10 @@ const DeleteModalBox = styled.div`
 
     text-align: center;
   }
+
+  & button:first-of-type {
+    justify-self: end;
+  }
 `;
 
 const DeleteModal = props => {
