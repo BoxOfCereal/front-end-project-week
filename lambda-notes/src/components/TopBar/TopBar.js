@@ -18,18 +18,21 @@ const routes = [
   {
     path: "/note/:id",
     exact: true,
-    TopBarContent: props => {
+    TopBarContent: withRouter(props => {
+      console.log(props);
       return (
         <div>
           {props.location.pathname.split("/")[3] === "edit" ? null : (
             <>
               <Link to={`/note/${props.match.params.id}/edit`}>edit</Link>
-              <Link to={`/note/${props.match.params.id}/delete`}>delete</Link>
+              <button href="" onClick={props.toggleModal}>
+                delete
+              </button>
             </>
           )}
         </div>
       );
-    }
+    })
   },
   {
     path: "/note/:id/edit",
@@ -50,7 +53,7 @@ const TopBar = props => {
           key={index}
           path={route.path}
           exact={route.exact}
-          component={withRouter(route.TopBarContent)}
+          render={_ => <route.TopBarContent {...props} />}
         />
       ))}
     </TopBarWrapper>

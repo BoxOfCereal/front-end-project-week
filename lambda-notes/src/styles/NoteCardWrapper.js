@@ -8,6 +8,7 @@ const NoteCardWrapper = styled.div`
    */
   word-wrap: break-word;
   overflow: hidden;
+  grid-area: auto/ auto/span 2 / auto;
 
   & div {
     border: 1px solid black;

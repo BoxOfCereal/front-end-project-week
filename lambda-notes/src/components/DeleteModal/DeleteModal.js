@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 import { Button } from "../index";
@@ -52,6 +53,7 @@ const DeleteModal = props => {
           warning
           onClick={() => {
             props.deleteNote(props.match.params.id);
+            props.toggleModal();
             props.history.push(`/`);
           }}
         >
@@ -59,7 +61,7 @@ const DeleteModal = props => {
         </Button>
         <Button
           onClick={() => {
-            props.history.push(`/note/${props.match.params.id}`);
+            props.toggleModal();
           }}
         >
           No
@@ -69,4 +71,4 @@ const DeleteModal = props => {
   );
 };
 
-export default DeleteModal;
+export default withRouter(DeleteModal);

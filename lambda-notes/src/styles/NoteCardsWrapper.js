@@ -10,6 +10,7 @@ const NoteCardsWrapper = styled.div`
    */
   /* By default grid has a min of 'auto' this sets it to zero */
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: minmax(200px, auto);
   grid-gap: 10px;
   grid-auto-flow: columns;
   grid-auto-columns: 1fr;

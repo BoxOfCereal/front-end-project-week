@@ -1,6 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import styled from "styled-components";
+
 import { NoteCardWrapper } from "../../styles";
+
+const NoteCardWrapperTall = styled(NoteCardWrapper)`
+  grid-area: auto/ auto/ span 2 / auto;
+`;
 
 const NoteCard = props => {
   return (

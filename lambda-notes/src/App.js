@@ -13,7 +13,8 @@ class App extends Component {
       notes: [],
       note: "",
       editedNote: "",
-      error: ""
+      error: "",
+      showDeleteModal: false
     };
   }
 
@@ -21,6 +22,14 @@ class App extends Component {
     this.fetchNotes();
     // this.fetchNote("5c6250dae3d19000159d2587");
   }
+
+  toggleModal = () => {
+    this.setState(function(state, props) {
+      return {
+        showDeleteModal: !state.showDeleteModal
+      };
+    });
+  };
 
   // a `GET` request to this route will return a list of all the notes.
   fetchNotes = () => {
@@ -99,7 +108,9 @@ class App extends Component {
         <Route path="/" component={SideBar} />
         <Route
           path="/"
-          render={props => <TopBar {...props} {...this.state} />}
+          render={props => (
+            <TopBar {...props} {...this.state} toggleModal={this.toggleModal} />
+          )}
         />
 
         <Route
@@ -132,40 +143,13 @@ class App extends Component {
             />
           )}
         />
-        <Route
-          exact
-          path="/note/:id/delete"
-          render={props => (
-            <DeleteModal deleteNote={this.deleteNote} {...props} />
-          )}
-        />
-        {/* <button
-          onClick={() => {
-            this.createNote({
-              tags: ["tag", "otherTag"],
-              title: "Note Title",
-              textBody: "Note Body"
-            });
-          }}
-        /> */}
-        {/* <button
-          onClick={() => {
-            this.editNote("5c63735eb3638b00153d4e59", {
-              title: "delete all of these",
-              textBody: "no really feel free to delete all of these",
-              tags: []
-            });
-          }}
-        >
-          EDIT
-        </button> */}
-        {/* <button
-          onClick={() => {
-            this.deleteNote("5c636979b3638b00153d4e52");
-          }}
-        >
-          Delete
-        </button> */}
+        {/* Show modal if true */}
+        {this.state.showDeleteModal && (
+          <DeleteModal
+            deleteNote={this.deleteNote}
+            toggleModal={this.toggleModal}
+          />
+        )}
       </ApplicationWrapper>
     );
   }
