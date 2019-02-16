@@ -39,11 +39,12 @@ const routes = [
 
 //https://reacttraining.com/react-router/web/example/sidebar
 const TopBar = props => {
+  console.log(props);
   return (
     <TopBarWrapper>
       <Route
         path={`/note/:id`}
-        render={_ => <TopBarTitle title={props.title} {..._} />}
+        render={_ => <TopBarTitle title={props.note.title} {..._} />}
       />
       {routes.map((route, index) => (
         <Route
