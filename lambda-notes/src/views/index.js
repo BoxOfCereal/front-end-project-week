@@ -3,3 +3,4 @@ export {
   default as CreateNoteView
 } from "../views/CreateNoteView/CreateNoteView";
 export { default as NoteView } from "../views/NoteView/NoteView";
+export { default as EditNoteView } from "../views/EditNoteView/EditNoteView";

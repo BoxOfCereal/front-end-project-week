@@ -3,7 +3,7 @@ import { Route, withRouter } from "react-router-dom";
 import axios from "axios";
 
 import { SideBar, TopBar, DeleteModal } from "./components";
-import { ListView, CreateNoteView, NoteView } from "./views";
+import { ListView, CreateNoteView, NoteView, EditNoteView } from "./views";
 import { ApplicationWrapper } from "./styles/index";
 
 class App extends Component {
@@ -64,11 +64,19 @@ class App extends Component {
     The response from the server will be the updated note object.
   */
   editNote = (_id, note) => {
+    const editedNoteIndex = this.state.notes.findIndex(e => e._id === _id);
     axios
       .put(`https://fe-notes.herokuapp.com/note/edit/${_id}`, note)
       .then(({ data }) => {
-        this.setState({ editedNote: data });
-        console.log(this.state.note);
+        this.setState({
+          editedNote: data,
+          notes: [
+            ...this.state.notes.slice(0, editedNoteIndex),
+            data,
+            ...this.state.notes.slice(editedNoteIndex + 1)
+          ]
+        });
+        this.props.history.push(`/note/${_id}`);
       })
       .catch(error => this.setState({ error: error }));
   };
@@ -109,6 +117,16 @@ class App extends Component {
           render={props => (
             <NoteView
               {...props}
+              fetchNote={this.fetchNote}
+              note={this.state.note}
+            />
+          )}
+        />
+        <Route
+          path="/note/:id/edit"
+          render={props => (
+            <EditNoteView
+              editNote={this.editNote}
               fetchNote={this.fetchNote}
               note={this.state.note}
             />

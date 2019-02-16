@@ -2,6 +2,7 @@ export { default as Note } from "./Note/Note";
 export { default as NoteCard } from "./NoteCard/NoteCard";
 export { default as NoteList } from "./NoteList/NoteList";
 export { default as NoteForm } from "./NoteForm/NoteForm";
+export { default as EditNoteForm } from "./EditNoteForm/EditNoteForm";
 export { default as Button } from "./Button/Button";
 export { default as SideBar } from "./SideBar/SideBar";
 export { default as TopBar } from "./TopBar/TopBar";
