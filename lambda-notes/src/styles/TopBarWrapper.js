@@ -9,10 +9,17 @@ const TopBarWrapper = styled.div`
   margin-bottom: 25px;
 
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
   & h2 {
     font-size: 1.2rem;
     margin-top: auto;
+    margin-left: 20px;
+  }
+
+  & div {
+    margin-right: 200px;
   }
 `;
 
