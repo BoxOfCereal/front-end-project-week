@@ -8,3 +8,6 @@ export { default as StyledForm } from "./StyledForm";
 export { default as StyledInput } from "./StyledInput";
 export { default as StyledTextArea } from "./StyledTextArea";
 export { default as StyledNav } from "./StyledNav";
+export {
+  default as ButtonThatLooksLikeALink
+} from "./ButtonThatLooksLikeALink";

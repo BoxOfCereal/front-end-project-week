@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Link, withRouter } from "react-router-dom";
 
 import { TopBarTitle } from "../index";
-import { TopBarWrapper } from "../../styles";
+import { TopBarWrapper, ButtonThatLooksLikeALink } from "../../styles";
 
 // This is a mess but I can't deal with it rn
 const routes = [
@@ -25,9 +25,9 @@ const routes = [
           {props.location.pathname.split("/")[3] === "edit" ? null : (
             <>
               <Link to={`/note/${props.match.params.id}/edit`}>edit</Link>
-              <button href="" onClick={props.toggleModal}>
+              <ButtonThatLooksLikeALink onClick={props.toggleModal}>
                 delete
-              </button>
+              </ButtonThatLooksLikeALink>
             </>
           )}
         </div>
