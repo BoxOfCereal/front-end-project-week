@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import { NoteWrapper } from "../../styles";
 
 class Note extends React.Component {
   constructor(props) {
@@ -34,9 +34,9 @@ class Note extends React.Component {
 
   render() {
     return (
-      <div>
+      <NoteWrapper>
         <p>{this.state.textBody}</p>
-      </div>
+      </NoteWrapper>
     );
   }
 }
