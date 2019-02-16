@@ -5,8 +5,8 @@ import styled from "styled-components";
 const StyledInput = styled.input`
   height: 40px;
   width: 400px;
-  border-radius: 2px;
-  border: 1px solid black;
+  border-radius: 3px;
+  border: 1px solid #c0c0c0;
   padding-left: 5px;
   &:not(:focus) {
     background-color: lightgray;
@@ -14,8 +14,8 @@ const StyledInput = styled.input`
 `;
 
 const StyledTextArea = styled.textarea`
-  border-radius: 2px;
-  border: 1px solid black;
+  border-radius: 3px;
+  border: 1px solid #c0c0c0;
   padding-left: 5px;
   width: 100%;
   height: 500px;
@@ -55,7 +55,7 @@ class NoteForm extends React.Component {
   render() {
     return (
       <div>
-        <form action="submit" onSubmit={this.createNote}>
+        <StyledForm action="submit" onSubmit={this.createNote}>
           <StyledInput
             type="text"
             name="title"
@@ -70,7 +70,7 @@ class NoteForm extends React.Component {
             value={this.state.textBody}
           />
           <Button type="submit">Add A Note!</Button>
-        </form>
+        </StyledForm>
       </div>
     );
   }
