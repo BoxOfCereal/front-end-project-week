@@ -6,7 +6,7 @@ const NoteList = props => {
   return (
     <NoteCardsWrapper>
       {props.notes.map(note => (
-        <NoteCard key={note.id} {...note} />
+        <NoteCard key={note._id} {...note} />
       ))}
     </NoteCardsWrapper>
   );

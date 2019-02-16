@@ -39,7 +39,6 @@ const routes = [
 
 //https://reacttraining.com/react-router/web/example/sidebar
 const TopBar = props => {
-  console.log(props);
   return (
     <TopBarWrapper>
       <Route
