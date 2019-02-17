@@ -31,6 +31,19 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FETCHING_NOTES:
+      return {
+        ...state,
+        fetchingNotes: true,
+        notesFetched: false
+      };
+    case NOTES_FETCHED:
+      return {
+        ...state,
+        fetchingNotes: false,
+        notesFetched: true,
+        notes: action.payload
+      };
     default:
       return state;
   }

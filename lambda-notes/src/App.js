@@ -20,8 +20,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.fetchNotes();
-    // this.fetchNote("5c6250dae3d19000159d2587");
+    // this.fetchNotes();
+    // // this.fetchNote("5c6250dae3d19000159d2587");
   }
 
   toggleModal = () => {
@@ -158,6 +158,7 @@ const mstp = state => {
 
 //react-router-v4-not-working-with-redux
 // https://stackoverflow.com/a/45056258
+//TLDR you need to wrap connect() with withRouter() `withRouter(connect()());`
 export default withRouter(
   connect(
     mstp,

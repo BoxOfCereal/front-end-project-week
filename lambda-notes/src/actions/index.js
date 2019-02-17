@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const FETCHING_NOTES = "FETCHING_NOTES";
 export const NOTES_FETCHED = "NOTES_FETCHED";
 export const FETCHING_NOTE = "FETCHING_NOTE";
@@ -11,3 +13,16 @@ export const NOTE_DELETED = "NOTE_DELETED";
 export const SHOW_DELETE_MODAL = "SHOW_DELETE_MODAL";
 export const HIDE_DELETE_MODAL = "HIDE_DELETE_MODAL";
 export const ERROR = "ERROR";
+
+export function fetchNotes() {
+  return dispatch => {
+    dispatch({ type: FETCHING_NOTES });
+    axios
+      .get(`https://fe-notes.herokuapp.com/note/get/all`)
+      .then(({ data }) => {
+        console.log(data);
+        dispatch({ type: NOTES_FETCHED, payload: data });
+      })
+      .catch(error => dispatch({ type: ERROR, payload: `${error}` }));
+  };
+}
