@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
 import axios from "axios";
+import { connect } from "react-redux";
 
 import { SideBar, TopBar, DeleteModal } from "./components";
 import { ListView, CreateNoteView, NoteView, EditNoteView } from "./views";
@@ -155,4 +156,11 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+const mstp = state => {
+  return {};
+};
+
+export default connect(
+  mstp,
+  {}
+)(withRouter(App));
