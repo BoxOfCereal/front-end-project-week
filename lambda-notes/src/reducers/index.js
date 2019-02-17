@@ -25,7 +25,7 @@ const initialState = {
   noteDeleted: false,
   notes: [],
   error: null,
-  currentNote: null,
+  note: null,
   showDeleteModal: false
 };
 
@@ -43,6 +43,19 @@ const rootReducer = (state = initialState, action) => {
         fetchingNotes: false,
         notesFetched: true,
         notes: action.payload
+      };
+    case FETCHING_NOTE:
+      return {
+        ...state,
+        fetchingNote: true,
+        noteFetched: false
+      };
+    case NOTE_FETCHED:
+      return {
+        ...state,
+        fetchingNote: false,
+        noteFetched: true,
+        note: action.payload
       };
     default:
       return state;

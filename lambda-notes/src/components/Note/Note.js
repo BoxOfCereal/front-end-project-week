@@ -1,43 +1,45 @@
 import React from "react";
 import { NoteWrapper } from "../../styles";
 
+import { connect } from "react-redux";
+import { fetchNote } from "../../actions";
+
 class Note extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      _id: "",
-      title: "",
-      textBody: "",
-      tags: "",
-      errorMessage: ""
-    };
+    this.state = {};
   }
 
   componentDidMount() {
     this.props.fetchNote(this.props.match.params.id);
-    // this.setState({ note: this.props.note });
   }
 
-  /*
-    I needed to have this life cycle method
-    because on component did mount i was changing props
-    But the set state in component did mount 
-    was firing before the props actually changed
-    because fetch note was asynchronous
+  /* parent && parent.child && parent.child.grandchild
+    Vanilla JavaScript solution for optional training
+    a couldn't get Babel  to actually implement the packets 
+    and I installed even though I had an A configuration file.
+
+    The whole reason I'm doing this is because render is called
+    before component did mount and by API call isn't being hit
+    therefore there is no note and there is no text body so I get an error 
+    if I try access text body
   */
-  componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-    if (this.props.note !== prevProps.note) {
-      this.setState({ ...this.props.note });
-    }
-  }
-
   render() {
+    console.log(this.props);
     return (
       <NoteWrapper>
-        <p>{this.state.textBody}</p>
+        <p>{this.props && this.props.note && this.props.note.textBody}</p>
       </NoteWrapper>
     );
   }
 }
-export default Note;
+
+const mstp = state => {
+  return {
+    note: state.note
+  };
+};
+export default connect(
+  mstp,
+  { fetchNote }
+)(Note);

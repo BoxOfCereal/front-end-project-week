@@ -14,6 +14,7 @@ export const SHOW_DELETE_MODAL = "SHOW_DELETE_MODAL";
 export const HIDE_DELETE_MODAL = "HIDE_DELETE_MODAL";
 export const ERROR = "ERROR";
 
+// a `GET` request to this route will return a list of all the notes.
 export function fetchNotes() {
   return dispatch => {
     dispatch({ type: FETCHING_NOTES });
@@ -22,6 +23,20 @@ export function fetchNotes() {
       .then(({ data }) => {
         console.log(data);
         dispatch({ type: NOTES_FETCHED, payload: data });
+      })
+      .catch(error => dispatch({ type: ERROR, payload: `${error}` }));
+  };
+}
+
+// a `GET` request to this route will return the note with the specified ID.
+export function fetchNote(id) {
+  return dispatch => {
+    dispatch({ type: FETCHING_NOTE });
+    axios
+      .get(`https://fe-notes.herokuapp.com/note/get/${id}`)
+      .then(({ data }) => {
+        console.log(data);
+        dispatch({ type: NOTE_FETCHED, payload: data });
       })
       .catch(error => dispatch({ type: ERROR, payload: `${error}` }));
   };

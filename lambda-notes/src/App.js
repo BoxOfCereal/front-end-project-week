@@ -122,13 +122,7 @@ class App extends Component {
         <Route
           path="/note/:id"
           exact
-          render={props => (
-            <NoteView
-              {...props}
-              fetchNote={this.fetchNote}
-              note={this.state.note}
-            />
-          )}
+          render={props => <NoteView {...props} />}
         />
         <Route
           path="/note/:id/edit"
