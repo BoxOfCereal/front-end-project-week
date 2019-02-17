@@ -1,0 +1,13 @@
+export const FETCHING_NOTES = "FETCHING_NOTES";
+export const NOTES_FETCHED = "NOTES_FETCHED";
+export const FETCHING_NOTE = "FETCHING_NOTE";
+export const NOTE_FETCHED = "NOTE_FETCHED";
+export const NOTE_SAVED = "NOTES_SAVED";
+export const SAVING_NOTE = "SAVING_NOTE";
+export const EDITING_NOTE = "EDITING_NOTE";
+export const NOTE_EDITED = "NOTE_EDITED";
+export const DELETING_NOTE = "DELETING_NOTE";
+export const NOTE_DELETED = "NOTE_DELETED";
+export const SHOW_DELETE_MODAL = "SHOW_DELETE_MODAL";
+export const HIDE_DELETE_MODAL = "HIDE_DELETE_MODAL";
+export const ERROR = "ERROR";
