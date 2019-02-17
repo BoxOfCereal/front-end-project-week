@@ -114,11 +114,7 @@ class App extends Component {
           )}
         />
 
-        <Route
-          path="/"
-          exact
-          render={props => <ListView notes={this.state.notes} />}
-        />
+        <Route path="/" exact render={props => <ListView />} />
         <Route
           path="/create"
           render={props => <CreateNoteView createNote={this.createNote} />}
@@ -160,7 +156,11 @@ const mstp = state => {
   return {};
 };
 
-export default connect(
-  mstp,
-  {}
-)(withRouter(App));
+//react-router-v4-not-working-with-redux
+// https://stackoverflow.com/a/45056258
+export default withRouter(
+  connect(
+    mstp,
+    {}
+  )(App)
+);
