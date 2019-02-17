@@ -25,7 +25,12 @@ const initialState = {
   noteDeleted: false,
   notes: [],
   error: null,
-  note: null,
+  note: {
+    _id: "",
+    tags: [],
+    title: "",
+    textBody: ""
+  },
   showDeleteModal: false
 };
 
