@@ -7,10 +7,10 @@ import {
   CREATING_NOTE,
   EDITING_NOTE,
   NOTE_EDITED,
-  SHOW_DELETE_MODAL,
-  HIDE_DELETE_MODAL,
   DELETING_NOTE,
   NOTE_DELETED,
+  SHOW_DELETE_MODAL,
+  HIDE_DELETE_MODAL,
   ERROR
 } from "../actions";
 
@@ -101,6 +101,29 @@ const rootReducer = (state = initialState, action) => {
           action.payload,
           ...state.notes.slice(editedNoteIndex + 1)
         ]
+      };
+    case DELETING_NOTE:
+      return {
+        ...setAllFalse(state),
+        deletingNote: true,
+        noteDeleted: false
+      };
+    case NOTE_DELETED:
+      return {
+        ...setAllFalse(state),
+        deletingNote: false,
+        noteDeleted: true,
+        notes: state.notes.filter(note => note._id !== action.payload)
+      };
+    case SHOW_DELETE_MODAL:
+      return {
+        ...state,
+        showDeleteModal: true
+      };
+    case HIDE_DELETE_MODAL:
+      return {
+        ...state,
+        showDeleteModal: false
       };
     default:
       return state;

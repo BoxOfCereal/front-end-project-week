@@ -3,7 +3,7 @@ import { Route, withRouter } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 
-import { SideBar, TopBar, DeleteModal } from "./components";
+import { SideBar, TopBar } from "./components";
 import { ListView, CreateNoteView, NoteView, EditNoteView } from "./views";
 import { ApplicationWrapper } from "./styles/index";
 
@@ -131,13 +131,6 @@ class App extends Component {
             <EditNoteView fetchNote={this.fetchNote} note={this.state.note} />
           )}
         />
-        {/* Show modal if true */}
-        {this.state.showDeleteModal && (
-          <DeleteModal
-            deleteNote={this.deleteNote}
-            toggleModal={this.toggleModal}
-          />
-        )}
       </ApplicationWrapper>
     );
   }

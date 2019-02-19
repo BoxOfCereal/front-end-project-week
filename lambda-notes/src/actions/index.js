@@ -68,7 +68,6 @@ export function createNote(note, history) {
   */
 export function editNote(_id, note, history) {
   return dispatch => {
-    //const
     dispatch({ type: EDITING_NOTE });
     axios
       .put(`https://fe-notes.herokuapp.com/note/edit/${_id}`, note)
@@ -80,5 +79,36 @@ export function editNote(_id, note, history) {
         history.push(`/note/${_id}`);
       })
       .catch(error => dispatch({ type: ERROR, payload: `${error}` }));
+  };
+}
+
+export function deleteNote(_id, history) {
+  return dispatch => {
+    dispatch({ type: DELETING_NOTE });
+    axios
+      .delete(`https://fe-notes.herokuapp.com/note/delete/${_id}`)
+      .then(({ data: { success } }) => {
+        dispatch({
+          type: NOTE_EDITED,
+          payload: _id
+        });
+        history.push(`/`);
+      })
+      .catch(error => dispatch({ type: ERROR, payload: `${error}` }));
+  };
+}
+
+// Show Delete Modal inside EditNote Component
+export function displayDeleteModal() {
+  console.log("test");
+  return {
+    type: SHOW_DELETE_MODAL
+  };
+}
+
+// Hide Delete Modal inside EditNote Component
+export function hideDeleteModal() {
+  return {
+    type: HIDE_DELETE_MODAL
   };
 }

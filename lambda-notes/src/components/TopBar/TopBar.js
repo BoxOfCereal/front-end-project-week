@@ -1,5 +1,7 @@
 import React from "react";
 import { Route, Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { displayDeleteModal } from "../../actions";
 
 import { TopBarTitle } from "../index";
 import { TopBarWrapper, ButtonThatLooksLikeALink } from "../../styles";
@@ -25,7 +27,7 @@ const routes = [
           {props.location.pathname.split("/")[3] === "edit" ? null : (
             <>
               <Link to={`/note/${props.match.params.id}/edit`}>edit</Link>
-              <ButtonThatLooksLikeALink onClick={props.toggleModal}>
+              <ButtonThatLooksLikeALink onClick={props.displayDeleteModal}>
                 delete
               </ButtonThatLooksLikeALink>
             </>
@@ -60,4 +62,11 @@ const TopBar = props => {
   );
 };
 
-export default TopBar;
+export default withRouter(
+  connect(
+    null,
+    {
+      displayDeleteModal
+    }
+  )(TopBar)
+);
