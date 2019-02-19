@@ -131,6 +131,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         showDeleteModal: false
       };
+    case ERROR:
+      return {
+        ...setAllFalse(state),
+        error: action.payload
+      };
     default:
       return state;
   }
