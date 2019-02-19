@@ -110,16 +110,11 @@ class App extends Component {
         <Route path="/" component={SideBar} />
         <Route
           path="/"
-          render={props => (
-            <TopBar {...props} {...this.state} toggleModal={this.toggleModal} />
-          )}
+          render={props => <TopBar {...props} {...this.state} />}
         />
 
         <Route path="/" exact render={props => <ListView />} />
-        <Route
-          path="/create"
-          render={props => <CreateNoteView createNote={this.createNote} />}
-        />
+        <Route path="/create" render={props => <CreateNoteView />} />
         <Route
           path="/note/:id"
           exact
@@ -127,9 +122,7 @@ class App extends Component {
         />
         <Route
           path="/note/:id/edit"
-          render={props => (
-            <EditNoteView fetchNote={this.fetchNote} note={this.state.note} />
-          )}
+          render={props => <EditNoteView note={this.state.note} />}
         />
       </ApplicationWrapper>
     );

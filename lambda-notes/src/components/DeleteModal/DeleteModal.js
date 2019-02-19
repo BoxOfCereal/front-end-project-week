@@ -55,8 +55,6 @@ const DeleteModal = props => {
           warning
           onClick={() => {
             props.deleteNote(props.match.params.id, props.history);
-            // props.toggleModal(); //change with action
-            // props.history.push(`/`);
           }}
         >
           Delete

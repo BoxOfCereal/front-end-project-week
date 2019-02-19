@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { editNote } from "../../actions";
+import { editNote, fetchNote } from "../../actions";
 
 import { Button } from "../index";
 import { StyledForm, StyledInput, StyledTextArea } from "../../styles/index";
@@ -18,14 +18,13 @@ class EditNoteForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchNote(this.props.match.params.id);
-    // this.setState({ note: this.props.note });
-  }
-
-  componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-    if (this.props.note !== prevProps.note) {
+    const id = this.props.match.params.id;
+    if (this.props.notes.length < 1) {
+      this.props.fetchNote(id);
       this.setState({ ...this.props.note });
+    } else {
+      const note = this.props.notes.find(note => note._id === id);
+      this.setState({ ...note });
     }
   }
 
@@ -63,11 +62,19 @@ class EditNoteForm extends React.Component {
   }
 }
 
+const mstp = state => {
+  return {
+    notes: state.notes,
+    note: state.note
+  };
+};
+
 export default withRouter(
   connect(
-    null,
+    mstp,
     {
-      editNote
+      editNote,
+      fetchNote
     }
   )(EditNoteForm)
 );

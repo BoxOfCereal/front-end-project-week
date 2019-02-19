@@ -60,7 +60,13 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingNote: true,
-        noteFetched: false
+        noteFetched: false,
+        note: {
+          _id: "",
+          tags: [],
+          title: "",
+          textBody: ""
+        }
       };
     case NOTE_FETCHED:
       return {
