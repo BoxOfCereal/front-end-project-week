@@ -61,3 +61,24 @@ export function createNote(note, history) {
       .catch(error => dispatch({ type: ERROR, payload: `${error}` }));
   };
 }
+
+/*a `PUT` request to this route with the title and text in the 
+    req body will edit the note with the specified ID. 
+    The response from the server will be the updated note object.
+  */
+export function editNote(_id, note, history) {
+  return dispatch => {
+    //const
+    dispatch({ type: EDITING_NOTE });
+    axios
+      .put(`https://fe-notes.herokuapp.com/note/edit/${_id}`, note)
+      .then(({ data }) => {
+        dispatch({
+          type: NOTE_EDITED,
+          payload: { ...data }
+        });
+        history.push(`/note/${_id}`);
+      })
+      .catch(error => dispatch({ type: ERROR, payload: `${error}` }));
+  };
+}

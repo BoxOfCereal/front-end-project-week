@@ -78,6 +78,7 @@ class App extends Component {
     axios
       .put(`https://fe-notes.herokuapp.com/note/edit/${_id}`, note)
       .then(({ data }) => {
+        console.log(data);
         this.setState({
           editedNote: data,
           notes: [

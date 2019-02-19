@@ -5,7 +5,7 @@ import {
   NOTE_FETCHED,
   NOTE_CREATED,
   CREATING_NOTE,
-  EDITING_NOTES,
+  EDITING_NOTE,
   NOTE_EDITED,
   SHOW_DELETE_MODAL,
   HIDE_DELETE_MODAL,
@@ -74,6 +74,26 @@ const rootReducer = (state = initialState, action) => {
         noteCreated: true,
         creatingNote: false,
         notes: [...state.notes, action.payload]
+      };
+    case EDITING_NOTE:
+      return {
+        ...state,
+        editingNote: true,
+        noteEdited: false
+      };
+    case NOTE_EDITED:
+      const editedNoteIndex = state.notes.findIndex(
+        e => e._id === action.payload._id
+      );
+      return {
+        ...state,
+        editingNote: false,
+        noteEdited: true,
+        notes: [
+          ...state.notes.slice(0, editedNoteIndex),
+          action.payload,
+          ...state.notes.slice(editedNoteIndex + 1)
+        ]
       };
     default:
       return state;

@@ -1,5 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { editNote } from "../../actions";
+
 import { Button } from "../index";
 import { StyledForm, StyledInput, StyledTextArea } from "../../styles/index";
 class EditNoteForm extends React.Component {
@@ -32,7 +35,7 @@ class EditNoteForm extends React.Component {
 
   editNote = e => {
     e.preventDefault();
-    this.props.editNote(this.state._id, { ...this.state });
+    this.props.editNote(this.state._id, { ...this.state }, this.props.history);
     this.setState({ title: "", textBody: "", tags: [] });
   };
 
@@ -60,4 +63,11 @@ class EditNoteForm extends React.Component {
   }
 }
 
-export default withRouter(EditNoteForm);
+export default withRouter(
+  connect(
+    null,
+    {
+      editNote
+    }
+  )(EditNoteForm)
+);
