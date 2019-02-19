@@ -7,6 +7,7 @@ const StyledTextArea = styled.textarea`
   width: 100%;
   height: 500px;
   resize: none;
+  outline-color: #24b8bd;
 
   /* Fades in and out*/
   &:not(:focus) {

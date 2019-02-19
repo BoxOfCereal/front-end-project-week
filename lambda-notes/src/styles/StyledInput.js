@@ -6,6 +6,7 @@ const StyledInput = styled.input`
   border-radius: 3px;
   border: 1px solid #c0c0c0;
   padding-left: 5px;
+  outline-color: #24b8bd;
 
   /* Fades in and out*/
   &:not(:focus) {
