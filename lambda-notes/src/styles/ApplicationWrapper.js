@@ -25,7 +25,7 @@ const ApplicationWrapper = styled.div`
   /*  main content */
   & section {
     margin-left: 180px;
-    padding: 99px 20px 0 20px;
+    padding: 99px 20px 20px 20px;
     background-color: #f2f1f2;
     /* height: 100%; */
     min-height: 100%;
