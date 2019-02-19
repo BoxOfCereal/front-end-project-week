@@ -19,9 +19,11 @@ const NoteCardWrapper = styled.div`
   }
 
   & div {
-    border: 1px solid black;
+    border: 1px solid whitesmoke;
+    border-radius: 2px;
     padding: 10px;
     min-height: 200px;
+    background-color: whitesmoke;
   }
 
   & h3 {
