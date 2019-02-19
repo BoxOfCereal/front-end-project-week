@@ -9,9 +9,9 @@ const NoteCardsWrapper = styled.div`
     https://stackoverflow.com/questions/52785750/prevent-grid-area-from-expanding-causing-whole-page-to-scroll
    */
   /* By default grid has a min of 'auto' this sets it to zero */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: [name1 name2] repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 10px;
-  grid-auto-flow: columns dense;
+  grid-auto-flow: dense;
   grid-auto-columns: 1fr;
 `;
 
