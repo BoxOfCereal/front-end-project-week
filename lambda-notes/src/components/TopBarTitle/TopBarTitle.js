@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 const TopBarTitle = props => {
+  console.log(props);
   return (
     <>
       {props.location.pathname.split("/")[3] !== "edit" ? (
