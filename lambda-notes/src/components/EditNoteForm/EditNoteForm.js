@@ -18,6 +18,7 @@ class EditNoteForm extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     const id = this.props.match.params.id;
     if (this.props.notes.length < 1) {
       this.props.fetchNote(id);
@@ -25,6 +26,22 @@ class EditNoteForm extends React.Component {
     } else {
       const note = this.props.notes.find(note => note._id === id);
       this.setState({ ...note });
+    }
+  }
+
+  /* This needs to be here because if I go directly to this URL
+    then I have to fetch the note. This is asynchronous and most likely
+    will never happen by the time that component did mount
+    would need to set the state.
+    so this checks that if the props have been changed because of the action,
+    and I need to update my state with that new note
+  */
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.note.title !== this.props.note.title) {
+      //check for when new data is passed into this component from its parent / container...
+      this.setState({
+        ...this.props.note
+      });
     }
   }
 
