@@ -36,8 +36,6 @@ class NoteForm extends React.Component {
   };
 
   render() {
-    console.log(this.state.tagInput);
-    console.log(this.formatTags(this.state.tagInput));
     return (
       <div>
         <StyledForm action="submit" onSubmit={this.createNote}>

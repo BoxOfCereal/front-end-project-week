@@ -21,7 +21,6 @@ const routes = [
     path: "/note/:id",
     exact: true,
     TopBarContent: withRouter(props => {
-      console.log(props);
       return (
         <div>
           {props.location.pathname.split("/")[3] === "edit" ? null : (

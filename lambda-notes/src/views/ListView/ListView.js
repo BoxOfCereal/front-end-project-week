@@ -9,7 +9,6 @@ const ListView = props => {
   //TLDR passing an empty array tells useEffect it doesn't rely on anything in the component
   //and to only fire on mount
   useEffect(() => {
-    console.log("testificate");
     props.fetchNotes();
   }, []);
 

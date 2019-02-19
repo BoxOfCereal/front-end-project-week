@@ -14,7 +14,7 @@ function clipText(text, maxLength) {
 }
 
 const NoteCard = ({ _id, title, textBody }) => {
-  const len = textBody.length;
+  const len = textBody && textBody.length;
   const maxLen = 230;
   return (
     <NoteCardWrapper>
