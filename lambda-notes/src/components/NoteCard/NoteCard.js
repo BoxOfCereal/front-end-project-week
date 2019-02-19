@@ -9,14 +9,20 @@ const NoteCardWrapperTall = styled(NoteCardWrapper)`
   grid-area: auto/ auto/ span 2 / auto;
 `;
 
-const NoteCard = props => {
+function clipText(text, maxLength) {
+  return text.slice(0, maxLength).concat("...");
+}
+
+const NoteCard = ({ _id, title, textBody }) => {
+  const len = textBody.length;
+  const maxLen = 230;
   return (
     <NoteCardWrapper>
-      <Link to={`/note/${props._id}`}>
+      <Link to={`/note/${_id}`}>
         <div>
-          <h3>{props.title}</h3>
+          <h3>{title}</h3>
           <hr />
-          <p>{props.textBody}</p>
+          <p>{len > maxLen ? clipText(textBody, maxLen) : textBody}</p>
         </div>
       </Link>
     </NoteCardWrapper>
