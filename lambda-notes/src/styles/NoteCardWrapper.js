@@ -38,6 +38,12 @@ const NoteCardWrapper = styled.div`
     color: inherit;
   }
 
+  & hr {
+    border: none;
+    border-top: 1px black solid;
+    height: 1px;
+  }
+
   @keyframes scaleUp {
     from {
       transform: scale(1);
