@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+import { createNote } from "../../actions";
+import { withRouter } from "react-router-dom";
 import { Button } from "../index";
 import { StyledForm, StyledInput, StyledTextArea } from "../../styles/index";
 class NoteForm extends React.Component {
@@ -18,7 +21,7 @@ class NoteForm extends React.Component {
 
   createNote = e => {
     e.preventDefault();
-    this.props.createNote({ ...this.state });
+    this.props.createNote({ ...this.state }, this.props.history);
     this.setState({ title: "", textBody: "", tags: [] });
   };
 
@@ -46,4 +49,11 @@ class NoteForm extends React.Component {
   }
 }
 
-export default NoteForm;
+export default withRouter(
+  connect(
+    null,
+    {
+      createNote
+    }
+  )(NoteForm)
+);

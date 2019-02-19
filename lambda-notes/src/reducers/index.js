@@ -3,8 +3,8 @@ import {
   NOTES_FETCHED,
   FETCHING_NOTE,
   NOTE_FETCHED,
-  NOTE_SAVED,
-  SAVING_NOTE,
+  NOTE_CREATED,
+  CREATING_NOTE,
   EDITING_NOTES,
   NOTE_EDITED,
   SHOW_DELETE_MODAL,
@@ -17,8 +17,8 @@ import {
 const initialState = {
   fetchingNotes: false,
   notesFetched: false,
-  noteSaved: false,
-  savingNote: false,
+  noteCreated: false,
+  creatingNote: false,
   editingNote: false,
   noteEdited: false,
   deletingNote: false,
@@ -61,6 +61,19 @@ const rootReducer = (state = initialState, action) => {
         fetchingNote: false,
         noteFetched: true,
         note: action.payload
+      };
+    case CREATING_NOTE:
+      return {
+        ...state,
+        noteCreated: false,
+        creatingNote: true
+      };
+    case NOTE_CREATED:
+      return {
+        ...state,
+        noteCreated: true,
+        creatingNote: false,
+        notes: [...state.notes, action.payload]
       };
     default:
       return state;
