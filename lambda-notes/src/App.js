@@ -128,11 +128,7 @@ class App extends Component {
         <Route
           path="/note/:id/edit"
           render={props => (
-            <EditNoteView
-              editNote={this.editNote}
-              fetchNote={this.fetchNote}
-              note={this.state.note}
-            />
+            <EditNoteView fetchNote={this.fetchNote} note={this.state.note} />
           )}
         />
         {/* Show modal if true */}

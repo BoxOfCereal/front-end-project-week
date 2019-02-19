@@ -34,6 +34,13 @@ const initialState = {
   showDeleteModal: false
 };
 
+function setAllFalse(state) {
+  for (let prop in state) {
+    if (typeof state[prop] === "boolean") state[prop] = false;
+  }
+  return { ...state };
+}
+
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_NOTES:
@@ -77,7 +84,7 @@ const rootReducer = (state = initialState, action) => {
       };
     case EDITING_NOTE:
       return {
-        ...state,
+        ...setAllFalse(state),
         editingNote: true,
         noteEdited: false
       };
@@ -86,7 +93,7 @@ const rootReducer = (state = initialState, action) => {
         e => e._id === action.payload._id
       );
       return {
-        ...state,
+        ...setAllFalse(state),
         editingNote: false,
         noteEdited: true,
         notes: [
