@@ -5,7 +5,7 @@ const StyledTextArea = styled.textarea`
   border: 1px solid #c0c0c0;
   padding-left: 5px;
   width: 100%;
-  height: 500px;
+  height: 400px;
   resize: none;
   outline-color: #24b8bd;
 

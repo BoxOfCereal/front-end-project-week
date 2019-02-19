@@ -11,7 +11,8 @@ class NoteForm extends React.Component {
     this.state = {
       title: "",
       textBody: "",
-      tags: []
+      tags: [],
+      tagInput: ""
     };
   }
 
@@ -19,13 +20,24 @@ class NoteForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  //  splits the tags by comma and trims whitespace
+  formatTags = tagString =>
+    tagString
+      .split(",")
+      .map(tag => tag.trim())
+      .filter(tag => tag.length > 0);
+
   createNote = e => {
     e.preventDefault();
-    this.props.createNote({ ...this.state }, this.props.history);
-    this.setState({ title: "", textBody: "", tags: [] });
+    const { tagInput, ...note } = this.state;
+    note.tags = [...this.formatTags(tagInput)];
+    this.props.createNote({ ...note }, this.props.history);
+    this.setState({ title: "", textBody: "", tags: [], tagInput: "" });
   };
 
   render() {
+    console.log(this.state.tagInput);
+    console.log(this.formatTags(this.state.tagInput));
     return (
       <div>
         <StyledForm action="submit" onSubmit={this.createNote}>
@@ -41,6 +53,13 @@ class NoteForm extends React.Component {
             placeholder="Note Content"
             onChange={this.inputChange}
             value={this.state.textBody}
+          />
+          <StyledInput
+            name="tagInput"
+            type="text"
+            placeholder="Tags, Separated, By, Comma"
+            onChange={this.inputChange}
+            value={this.state.tagInput}
           />
           <Button type="submit">Add A Note!</Button>
         </StyledForm>

@@ -47,6 +47,7 @@ export function fetchNote(id) {
     The response from the server will be the ID of the new note.
   */
 export function createNote(note, history) {
+  console.log(note);
   return dispatch => {
     dispatch({ type: CREATING_NOTE });
     axios
