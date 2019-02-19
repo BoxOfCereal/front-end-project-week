@@ -73,7 +73,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         fetchingNote: false,
         noteFetched: true,
-        note: action.payload
+        note: { ...action.payload }
       };
     case CREATING_NOTE:
       return {

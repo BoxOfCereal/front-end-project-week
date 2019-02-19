@@ -13,7 +13,8 @@ class EditNoteForm extends React.Component {
       title: "",
       textBody: "",
       tags: [],
-      _id: ""
+      _id: "",
+      tagInput: ""
     };
   }
 
@@ -56,6 +57,7 @@ class EditNoteForm extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <StyledForm action="submit" onSubmit={this.editNote}>
@@ -71,6 +73,13 @@ class EditNoteForm extends React.Component {
             placeholder="Note Content"
             onChange={this.inputChange}
             value={this.state.textBody}
+          />
+          <StyledInput
+            name="tagInput"
+            type="text"
+            placeholder="Tags, Separated, By, Comma"
+            onChange={this.inputChange}
+            value={this.state.tagInput}
           />
           <Button type="submit">Update</Button>
         </StyledForm>
