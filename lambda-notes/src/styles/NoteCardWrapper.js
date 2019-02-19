@@ -10,6 +10,14 @@ const NoteCardWrapper = styled.div`
   overflow: hidden;
   grid-area: auto/ auto/span 2 / auto;
 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  :hover {
+    animation-name: scaleUp;
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+  }
+
   & div {
     border: 1px solid black;
     padding: 10px;
@@ -26,6 +34,17 @@ const NoteCardWrapper = styled.div`
   & a {
     text-decoration: none;
     color: inherit;
+  }
+
+  @keyframes scaleUp {
+    from {
+      transform: scale(1);
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+    }
+    to {
+      transform: scale(1.02);
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.28);
+    }
   }
 `;
 
