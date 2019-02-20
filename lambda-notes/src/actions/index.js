@@ -15,6 +15,7 @@ export const HIDE_DELETE_MODAL = "HIDE_DELETE_MODAL";
 export const LOGGING_IN = "LOGGING_IN";
 export const LOGGED_IN = "LOGGED_IN";
 export const LOGGING_OUT = "LOGGING_OUT";
+export const LOGGED_OUT = "LOGGED_OUT";
 
 export const ERROR = "ERROR";
 
@@ -136,8 +137,17 @@ const fakeLogin = ({ username, password }) => {
 export function login(userinfo, history) {
   return dispatch => {
     dispatch({ type: LOGGING_IN });
-    fakeLogin(userinfo).then(user => {
-      dispatch({ type: LOGGED_IN, payload: user });
-    });
+    fakeLogin(userinfo)
+      .then(user => {
+        dispatch({ type: LOGGED_IN, payload: user });
+      })
+      .catch(error => dispatch({ type: ERROR, payload: error }));
+  };
+}
+
+export function logout(history) {
+  return dispatch => {
+    dispatch({ type: LOGGING_OUT });
+    dispatch({ type: LOGGED_OUT });
   };
 }

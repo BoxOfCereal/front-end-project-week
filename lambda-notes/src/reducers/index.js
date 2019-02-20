@@ -14,6 +14,7 @@ import {
   LOGGING_IN,
   LOGGED_IN,
   LOGGING_OUT,
+  LOGGED_OUT,
   ERROR
 } from "../actions";
 
@@ -38,6 +39,7 @@ const initialState = {
   loggingIn: false,
   loggedIn: false,
   loggingOut: false,
+  loggedOut: false,
   user: ""
 };
 
@@ -144,6 +146,7 @@ const rootReducer = (state = initialState, action) => {
         loggingIn: true,
         loggedIn: false,
         loggingOut: false,
+        loggedOut: false,
         user: ""
       };
     case LOGGED_IN:
@@ -152,7 +155,26 @@ const rootReducer = (state = initialState, action) => {
         loggingIn: false,
         loggedIn: true,
         loggingOut: false,
+        loggedOut: false,
         user: action.payload
+      };
+    case LOGGING_OUT:
+      return {
+        ...state,
+        loggingIn: false,
+        loggedIn: false,
+        loggingOut: true,
+        loggedOut: false,
+        user: ""
+      };
+    case LOGGED_OUT:
+      return {
+        ...state,
+        loggingIn: false,
+        loggedIn: false,
+        loggingOut: false,
+        loggedOut: true,
+        user: ""
       };
 
     case ERROR:
