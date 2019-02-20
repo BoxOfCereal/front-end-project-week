@@ -18,15 +18,22 @@ class EditNoteForm extends React.Component {
     };
   }
 
+  // tagInput: ["testificate", "important"].join(",") is to simulate tags working
   componentDidMount() {
     console.log(this.props);
     const id = this.props.match.params.id;
     if (this.props.notes.length < 1) {
       this.props.fetchNote(id);
-      this.setState({ ...this.props.note });
+      this.setState({
+        ...this.props.note,
+        tagInput: ["testificate", "important"].join(",")
+      });
     } else {
       const note = this.props.notes.find(note => note._id === id);
-      this.setState({ ...note });
+      this.setState({
+        ...note,
+        tagInput: ["testificate", "important"].join(",")
+      });
     }
   }
 
@@ -41,7 +48,8 @@ class EditNoteForm extends React.Component {
     if (prevProps.note.title !== this.props.note.title) {
       //check for when new data is passed into this component from its parent / container...
       this.setState({
-        ...this.props.note
+        ...this.props.note,
+        tagInput: ["testificate", "important"].join(",")
       });
     }
   }
@@ -50,8 +58,18 @@ class EditNoteForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  //  splits the tags by comma and trims whitespace
+  formatTags = tagString =>
+    tagString
+      .split(",")
+      .map(tag => tag.trim())
+      .filter(tag => tag.length > 0);
+
   editNote = e => {
     e.preventDefault();
+    const { tagInput, ...note } = this.state;
+    note.tags = [...this.formatTags(tagInput)];
+    console.log(note);
     this.props.editNote(this.state._id, { ...this.state }, this.props.history);
     this.setState({ title: "", textBody: "", tags: [] });
   };
