@@ -2,7 +2,6 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteNote, hideDeleteModal } from "../../actions";
-import styled from "styled-components";
 
 import { Button } from "../index";
 import { FullScreenOverlay, DeleteModalBox } from "../../styles";
