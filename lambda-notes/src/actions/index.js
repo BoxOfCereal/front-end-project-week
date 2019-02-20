@@ -12,6 +12,10 @@ export const DELETING_NOTE = "DELETING_NOTE";
 export const NOTE_DELETED = "NOTE_DELETED";
 export const SHOW_DELETE_MODAL = "SHOW_DELETE_MODAL";
 export const HIDE_DELETE_MODAL = "HIDE_DELETE_MODAL";
+export const LOGGING_IN = "LOGGING_IN";
+export const LOGGED_IN = "LOGGED_IN";
+export const LOGGING_OUT = "LOGGING_OUT";
+
 export const ERROR = "ERROR";
 
 // a `GET` request to this route will return a list of all the notes.
@@ -111,5 +115,29 @@ export function displayDeleteModal() {
 export function hideDeleteModal() {
   return {
     type: HIDE_DELETE_MODAL
+  };
+}
+
+// simulate server call
+const fakeLogin = ({ username, password }) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (username !== "nole" && password !== "something") {
+        reject("User Does Not Exist");
+      } else {
+        resolve(username);
+      }
+    }, 1000);
+  });
+};
+
+//  mock up login function
+//userinfo is an object
+export function login(userinfo, history) {
+  return dispatch => {
+    dispatch({ type: LOGGING_IN });
+    fakeLogin(userinfo).then(user => {
+      dispatch({ type: LOGGED_IN, payload: user });
+    });
   };
 }

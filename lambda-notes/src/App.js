@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { SideBar, TopBar } from "./components";
+import { SideBar, TopBar, LoginForm } from "./components";
 import { ListView, CreateNoteView, NoteView, EditNoteView } from "./views";
 import { ApplicationWrapper } from "./styles/index";
 
@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   render() {
-    return (
+    return this.props.loggedIn ? (
       <ApplicationWrapper>
         <Route path="/" component={SideBar} />
         <Route
@@ -39,12 +39,14 @@ class App extends Component {
           render={props => <EditNoteView note={this.state.note} />}
         />
       </ApplicationWrapper>
+    ) : (
+      <LoginForm />
     );
   }
 }
 
 const mstp = state => {
-  return {};
+  return { loggedIn: state.loggedIn };
 };
 
 //react-router-v4-not-working-with-redux

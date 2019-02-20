@@ -11,6 +11,9 @@ import {
   NOTE_DELETED,
   SHOW_DELETE_MODAL,
   HIDE_DELETE_MODAL,
+  LOGGING_IN,
+  LOGGED_IN,
+  LOGGING_OUT,
   ERROR
 } from "../actions";
 
@@ -31,7 +34,11 @@ const initialState = {
     title: "",
     textBody: ""
   },
-  showDeleteModal: false
+  showDeleteModal: false,
+  loggingIn: false,
+  loggedIn: false,
+  loggingOut: false,
+  user: ""
 };
 
 function setAllFalse(state) {
@@ -131,6 +138,23 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         showDeleteModal: false
       };
+    case LOGGING_IN:
+      return {
+        ...state,
+        loggingIn: true,
+        loggedIn: false,
+        loggingOut: false,
+        user: ""
+      };
+    case LOGGED_IN:
+      return {
+        ...state,
+        loggingIn: false,
+        loggedIn: true,
+        loggingOut: false,
+        user: action.payload
+      };
+
     case ERROR:
       return {
         ...setAllFalse(state),
