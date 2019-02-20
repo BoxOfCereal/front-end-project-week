@@ -13,8 +13,9 @@ function clipText(text, maxLength) {
   return text.slice(0, maxLength).concat("...");
 }
 
-const NoteCard = ({ _id, title, textBody }) => {
+const NoteCard = ({ _id, title, textBody, tags }) => {
   const len = textBody && textBody.length;
+  const tagsLength = tags && tags.length;
   const maxLen = 230;
   return (
     <NoteCardWrapper>
@@ -23,6 +24,7 @@ const NoteCard = ({ _id, title, textBody }) => {
           <h3>{title}</h3>
           <hr />
           <p>{len > maxLen ? clipText(textBody, maxLen) : textBody}</p>
+          {tagsLength > 0 ? <p>{tags.join(",")}</p> : <p>[no tag]</p>}
         </div>
       </Link>
     </NoteCardWrapper>

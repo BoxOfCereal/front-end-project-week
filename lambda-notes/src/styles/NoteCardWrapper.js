@@ -24,6 +24,9 @@ const NoteCardWrapper = styled.div`
     padding: 10px;
     min-height: 200px;
     background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   & h3 {
@@ -31,6 +34,10 @@ const NoteCardWrapper = styled.div`
   }
   & p {
     font-size: 0.9rem;
+  }
+  & p:last-child {
+    margin-top: auto;
+    font-style: italic;
   }
 
   & a {
@@ -42,6 +49,7 @@ const NoteCardWrapper = styled.div`
     border: none;
     border-top: 1px black solid;
     height: 1px;
+    width: 100%;
   }
 
   @keyframes scaleUp {
