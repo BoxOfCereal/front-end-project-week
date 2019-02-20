@@ -5,6 +5,15 @@ import { login } from "../../actions";
 import { withRouter } from "react-router-dom";
 import { Button } from "../index";
 import { StyledForm, StyledInput, FullScreenOverlay } from "../../styles/index";
+
+import styled from "styled-components";
+const StyledLoginForm = styled(StyledForm)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +36,7 @@ class LoginForm extends React.Component {
   render() {
     return (
       <FullScreenOverlay>
-        <StyledForm action="submit" onSubmit={this.login}>
+        <StyledLoginForm action="submit" onSubmit={this.login}>
           <StyledInput
             type="text"
             name="username"
@@ -43,7 +52,7 @@ class LoginForm extends React.Component {
             value={this.state.password}
           />
           <Button type="submit">Login</Button>
-        </StyledForm>
+        </StyledLoginForm>
       </FullScreenOverlay>
     );
   }
