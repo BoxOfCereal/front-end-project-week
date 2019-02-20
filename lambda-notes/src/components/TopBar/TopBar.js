@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { displayDeleteModal } from "../../actions";
+import { displayDeleteModal, logout } from "../../actions";
 
 import { TopBarTitle } from "../index";
 import { TopBarWrapper, ButtonThatLooksLikeALink } from "../../styles";
@@ -57,6 +57,11 @@ const TopBar = props => {
           render={_ => <route.TopBarContent {...props} />}
         />
       ))}
+      <div>
+        <ButtonThatLooksLikeALink onClick={props.logout}>
+          logout
+        </ButtonThatLooksLikeALink>
+      </div>
     </TopBarWrapper>
   );
 };
@@ -65,7 +70,8 @@ export default withRouter(
   connect(
     null,
     {
-      displayDeleteModal
+      displayDeleteModal,
+      logout
     }
   )(TopBar)
 );
