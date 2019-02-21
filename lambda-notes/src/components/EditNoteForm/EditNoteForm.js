@@ -106,7 +106,7 @@ class EditNoteForm extends React.Component {
   }
 }
 
-const mstp = state => {
+const mstp = ({ notesReducer: state }) => {
   return {
     notes: state.notes,
     note: state.note

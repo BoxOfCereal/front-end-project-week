@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 const PrivateRoute = ({ isAllowed, ...props }) =>
   isAllowed ? <Route {...props} /> : <Redirect to="/login" />;
 
-const mstp = state => {
+const mstp = ({ authReducer: state }) => {
   return { loggedIn: state.loggedIn };
 };
 

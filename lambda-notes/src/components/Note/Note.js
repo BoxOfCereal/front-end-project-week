@@ -35,7 +35,7 @@ class Note extends React.Component {
   }
 }
 
-const mstp = state => {
+const mstp = ({ notesReducer: state }) => {
   return {
     note: state.note
   };

@@ -32,7 +32,7 @@ const DeleteModal = props => {
   ) : null;
 };
 
-const mstp = state => {
+const mstp = ({ notesReducer: state }) => {
   return {
     showDeleteModal: state.showDeleteModal
   };

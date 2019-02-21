@@ -11,7 +11,7 @@ const TopBarTitle = props => {
   );
 };
 
-const mstp = state => {
+const mstp = ({ notesReducer: state }) => {
   return {
     noteTitle: state.note.title,
     fetchingNote: state.fetchingNotes

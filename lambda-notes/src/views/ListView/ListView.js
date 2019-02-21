@@ -19,7 +19,7 @@ const ListView = props => {
   );
 };
 
-const mstp = state => {
+const mstp = ({ notesReducer: state }) => {
   return {
     notes: state.notes
   };
