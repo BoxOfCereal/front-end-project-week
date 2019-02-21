@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { login } from "../../actions";
@@ -17,7 +18,6 @@ const StyledLoginForm = styled(StyledForm)`
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.state = {
       username: "",
       password: ""
@@ -31,6 +31,7 @@ class LoginForm extends React.Component {
   login = e => {
     e.preventDefault();
     this.props.login({ ...this.state }, this.props.history);
+    this.props.history.push("/");
   };
 
   render() {

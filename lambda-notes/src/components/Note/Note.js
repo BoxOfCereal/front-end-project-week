@@ -1,7 +1,8 @@
 import React from "react";
-import { NoteWrapper } from "../../styles";
-
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+
+import { NoteWrapper } from "../../styles";
 import { fetchNote } from "../../actions";
 
 class Note extends React.Component {
@@ -39,7 +40,9 @@ const mstp = state => {
     note: state.note
   };
 };
-export default connect(
-  mstp,
-  { fetchNote }
-)(Note);
+export default withRouter(
+  connect(
+    mstp,
+    { fetchNote }
+  )(Note)
+);

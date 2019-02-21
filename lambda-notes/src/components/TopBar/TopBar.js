@@ -47,7 +47,7 @@ const TopBar = props => {
     <TopBarWrapper>
       <Route
         path={`/note/:id`}
-        render={_ => <TopBarTitle title={props.note.title} {..._} />}
+        render={_ => <TopBarTitle title={`test`} {..._} />}
       />
       {routes.map((route, index) => (
         <Route
