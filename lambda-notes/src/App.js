@@ -62,7 +62,8 @@ class App extends Component {
   }
 }
 
-const mstp = state => {
+const mstp = ({ authReducer: state }) => {
+  console.log(state);
   return { loggedIn: state.loggedIn };
 };
 
