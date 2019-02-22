@@ -4,11 +4,7 @@ import { connect } from "react-redux";
 import { displayDeleteModal, logout } from "../../actions";
 
 import { TopBarTitle, TopHomeContent } from "../index";
-import {
-  TopBarWrapper,
-  ButtonThatLooksLikeALink,
-  StyledInput
-} from "../../styles";
+import { TopBarWrapper, ButtonThatLooksLikeALink } from "../../styles";
 
 // This is a mess but I can't deal with it rn
 const routes = [
