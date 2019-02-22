@@ -11,6 +11,9 @@ const TopBarWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-end;
 
   & h2 {
     font-size: 1.2rem;
@@ -18,8 +21,18 @@ const TopBarWrapper = styled.div`
     margin-left: 20px;
   }
 
-  & div {
+  & a {
+    padding: 1px 6px;
+  }
+
+  & input {
+    margin: 0 auto;
+  }
+  & div:last-of-type {
+    background-color: red;
     margin-right: 200px;
+    margin-left: auto;
+    align-self: flex-start;
   }
 `;
 

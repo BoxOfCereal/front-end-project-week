@@ -3,19 +3,41 @@ import { Route, Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { displayDeleteModal, logout } from "../../actions";
 
-import { TopBarTitle } from "../index";
-import { TopBarWrapper, ButtonThatLooksLikeALink } from "../../styles";
+import { TopBarTitle, TopHomeContent } from "../index";
+import {
+  TopBarWrapper,
+  ButtonThatLooksLikeALink,
+  StyledInput
+} from "../../styles";
 
 // This is a mess but I can't deal with it rn
 const routes = [
   {
     path: "/",
     exact: true,
-    TopBarContent: () => <h2>Your Notes:</h2>
+    TopBarContent: props => {
+      return (
+        <>
+          <TopHomeContent {...props} />
+        </>
+      );
+    }
   },
   {
     path: "/create",
-    TopBarContent: () => <h2>Create New Note:</h2>
+    TopBarContent: props => {
+      console.log(props);
+      return (
+        <>
+          <h2>Create New Note:</h2>
+          <div>
+            <ButtonThatLooksLikeALink onClick={props.logout}>
+              logout
+            </ButtonThatLooksLikeALink>
+          </div>
+        </>
+      );
+    }
   },
   {
     path: "/note/:id",
@@ -29,6 +51,9 @@ const routes = [
               <ButtonThatLooksLikeALink onClick={props.displayDeleteModal}>
                 delete
               </ButtonThatLooksLikeALink>
+              <ButtonThatLooksLikeALink onClick={props.logout}>
+                logout
+              </ButtonThatLooksLikeALink>
             </>
           )}
         </div>
@@ -37,7 +62,19 @@ const routes = [
   },
   {
     path: "/note/:id/edit",
-    TopBarContent: () => <h2>Edit Note:</h2>
+    TopBarContent: props => {
+      console.log(props);
+      return (
+        <>
+          <h2>Edit Note:</h2>
+          <div>
+            <ButtonThatLooksLikeALink onClick={props.logout}>
+              logout
+            </ButtonThatLooksLikeALink>
+          </div>
+        </>
+      );
+    }
   }
 ];
 
@@ -45,10 +82,7 @@ const routes = [
 const TopBar = props => {
   return (
     <TopBarWrapper>
-      <Route
-        path={`/note/:id`}
-        render={_ => <TopBarTitle title={`test`} {..._} />}
-      />
+      <Route path={`/note/:id`} render={_ => <TopBarTitle {..._} />} />
       {routes.map((route, index) => (
         <Route
           key={index}
@@ -57,11 +91,6 @@ const TopBar = props => {
           render={_ => <route.TopBarContent {...props} />}
         />
       ))}
-      <div>
-        <ButtonThatLooksLikeALink onClick={props.logout}>
-          logout
-        </ButtonThatLooksLikeALink>
-      </div>
     </TopBarWrapper>
   );
 };

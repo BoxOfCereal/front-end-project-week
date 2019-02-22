@@ -8,5 +8,6 @@ export { default as Button } from "./Button/Button";
 export { default as SideBar } from "./SideBar/SideBar";
 export { default as TopBar } from "./TopBar/TopBar";
 export { default as TopBarTitle } from "./TopBarTitle/TopBarTitle";
+export { default as TopHomeContent } from "./TopHomeContent/TopHomeContent";
 export { default as DeleteModal } from "./DeleteModal/DeleteModal";
 export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
