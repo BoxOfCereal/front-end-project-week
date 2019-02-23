@@ -43,8 +43,7 @@ const initialState = {
   searchTerm: "",
   sortBy: "",
   exportingNotesToCsv: false,
-  exportedNotesToCsv: false,
-  csvBlob: null
+  exportedNotesToCsv: false
 };
 
 function setAllFalse(state) {
@@ -234,15 +233,13 @@ export const notesReducer = (state = initialState, action) => {
       return {
         ...state,
         exportingNotesToCsv: true,
-        exportedNotesToCsv: false,
-        csvBlob: null
+        exportedNotesToCsv: false
       };
     case EXPORTED_NOTES_TO_CSV:
       return {
         ...state,
         exportingNotesToCsv: false,
-        exportedNotesToCsv: true,
-        csvBlob: action.payload
+        exportedNotesToCsv: true
       };
     case ERROR:
       return {

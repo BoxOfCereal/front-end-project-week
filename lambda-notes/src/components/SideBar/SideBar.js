@@ -15,12 +15,25 @@ const SideBar = props => {
       <Link to="/create">
         <Button>+ Create New Note</Button>
       </Link>
-      <Button onClick={props.exportNotesToCSV}>Export To CSV</Button>
+      <Button
+        onClick={() => {
+          props.exportNotesToCSV();
+        }}
+      >
+        Export To CSV
+      </Button>
     </StyledNav>
   );
 };
 
+const mstp = ({ notesReducer: state }) => {
+  return {
+    csvBlob: state.csvBlob,
+    csvUrl: state.csvUrl
+  };
+};
+
 export default connect(
-  null,
+  mstp,
   { exportNotesToCSV }
 )(SideBar);

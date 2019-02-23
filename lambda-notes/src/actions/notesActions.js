@@ -191,17 +191,35 @@ const convertNotesToCSV = objArr => {
   return csvText;
 };
 
+//convert objArr to blob and download it
+const downloadBlob = (name, objArr) => {
+  const blob = new Blob(["\ufeff", objArr], {
+    type: "text/csv"
+  });
+  const date = new Date().toDateString();
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  document.body.appendChild(a);
+  a.style = "display: none";
+  a.href = url;
+  a.download = `${name} ${date}.csv`;
+  a.click();
+  //static method releases an existing object URL which was previously created by calling URL.createObjectURL().
+  window.URL.revokeObjectURL(url);
+  document.body.removeChild(a);
+};
+
 /*it was suggested to use thunk to get the current state
   and I wanna do this instead of making a server call
-  because I want what is downloaded reflect what the client sees
+  because I want what is downloaded reflect what the client sees,
+  This also all feels super hacky
 */
 export function exportNotesToCSV() {
   return (dispatch, getState) => {
     const { notes } = getState().notesReducer;
     dispatch({ type: EXPORTING_NOTES_TO_CSV });
-    const blob = new Blob(["\ufeff", convertNotesToCSV(notes)], {
-      type: "text/csv"
-    });
-    dispatch({ type: EXPORTED_NOTES_TO_CSV, payload: blob });
+
+    downloadBlob(`Notes`, convertNotesToCSV(notes));
+    dispatch({ type: EXPORTED_NOTES_TO_CSV });
   };
 }
