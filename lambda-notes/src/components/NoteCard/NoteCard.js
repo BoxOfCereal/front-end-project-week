@@ -15,15 +15,19 @@ function clipText(text, maxLength) {
 
 const NoteCard = ({ _id, title, textBody, tags }) => {
   const len = textBody && textBody.length;
+  const titleLen = title && title.length;
   const tagsLength = tags && tags.length;
-  const maxLen = 230;
+  const maxBodyLen = 230;
+  const maxTitleLen = 20;
   return (
     <NoteCardWrapper>
       <Link to={`/note/${_id}`}>
         <div>
-          <h3>{title}</h3>
+          <h3>
+            {titleLen > maxTitleLen ? clipText(title, maxTitleLen) : title}
+          </h3>
           <hr />
-          <p>{len > maxLen ? clipText(textBody, maxLen) : textBody}</p>
+          <p>{len > maxBodyLen ? clipText(textBody, maxBodyLen) : textBody}</p>
           {tagsLength > 0 ? <p>{tags.join(",")}</p> : <p>[no tag]</p>}
         </div>
       </Link>
