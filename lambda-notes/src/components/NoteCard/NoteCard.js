@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import styled from "styled-components";
-
 import { NoteCardWrapper } from "../../styles";
-
-const NoteCardWrapperTall = styled(NoteCardWrapper)`
-  grid-area: auto/ auto/ span 2 / auto;
-`;
 
 function clipText(text, maxLength) {
   return text.slice(0, maxLength).concat("...");
@@ -18,7 +12,7 @@ const NoteCard = ({ _id, title, textBody, tags }) => {
   const titleLen = title && title.length;
   const tagsLength = tags && tags.length;
   const maxBodyLen = 230;
-  const maxTitleLen = 20;
+  const maxTitleLen = 19;
   return (
     <NoteCardWrapper>
       <Link to={`/note/${_id}`}>
