@@ -26,7 +26,6 @@ const TopBarWrapper = styled.div`
   }
 
   & div:last-of-type {
-    background-color: red;
     margin-right: 200px;
     margin-left: auto;
     align-self: flex-start;
