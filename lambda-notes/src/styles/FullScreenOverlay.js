@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const FullScreenOverlay = styled.div`
   position: fixed;
+  z-index: 10001;
   height: 100%;
   width: 100%;
   padding-top: 250px;
