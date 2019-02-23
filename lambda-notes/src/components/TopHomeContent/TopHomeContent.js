@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import {
   StyledInput,
@@ -17,8 +17,12 @@ import {
 const TopHomeContent = props => {
   const [value, setValue] = useState("");
 
+  // when the component mounts I want to clear the search term
+  useEffect(() => {
+    props.setSearchTerm("");
+  }, []);
+
   //on mount clear searc
-  //zindex of modal
   return (
     <>
       {console.log(value)}
