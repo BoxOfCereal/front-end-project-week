@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const TopBarWrapper = styled.div`
   position: fixed;
+  z-index: 10000;
   width: 100%;
   background: #f2f1f2;
   margin-left: 180px;
