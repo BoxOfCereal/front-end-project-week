@@ -12,6 +12,11 @@ import {
   SHOW_DELETE_MODAL,
   HIDE_DELETE_MODAL,
   UPDATE_SEARCH_TERM,
+  SORT_BY_TITLE_A_TO_Z,
+  SORT_BY_TITLE_Z_TO_A,
+  SORT_BY_TITLE_NEWEST,
+  SORT_BY_TITLE_OLDEST,
+  REMOVE_SORT,
   ERROR
 } from "../actions";
 
@@ -33,7 +38,8 @@ const initialState = {
     textBody: ""
   },
   showDeleteModal: false,
-  searchTerm: ""
+  searchTerm: "",
+  sortBy: ""
 };
 
 function setAllFalse(state) {
@@ -137,6 +143,87 @@ export const notesReducer = (state = initialState, action) => {
       return {
         ...state,
         searchTerm: action.payload
+      };
+
+    case SORT_BY_TITLE_A_TO_Z:
+      return {
+        ...state,
+        sortBy: action.payload,
+        notes: [
+          ...state.notes.sort((a, b) => {
+            if (a.title < b.title) {
+              return -1;
+            }
+            if (a.title > b.title) {
+              return 1;
+            }
+            return 0;
+          })
+        ]
+      };
+    case SORT_BY_TITLE_Z_TO_A:
+      return {
+        ...state,
+        sortBy: action.payload,
+        notes: [
+          ...state.notes.sort((a, b) => {
+            if (a.title < b.title) {
+              return 1;
+            }
+            if (a.title > b.title) {
+              return -1;
+            }
+            return 0;
+          })
+        ]
+      };
+    case SORT_BY_TITLE_NEWEST:
+      return {
+        ...state,
+        sortBy: action.payload,
+        notes: [
+          ...state.notes.sort((a, b) => {
+            if (parseInt(a._id, 16) < parseInt(b._id, 16)) {
+              return -1;
+            }
+            if (parseInt(a._id, 16) > parseInt(b._id, 16)) {
+              return 1;
+            }
+            return 0;
+          })
+        ]
+      };
+    case SORT_BY_TITLE_OLDEST:
+      return {
+        ...state,
+        sortBy: action.payload,
+        notes: [
+          ...state.notes.sort((a, b) => {
+            if (parseInt(a._id, 16) < parseInt(b._id, 16)) {
+              return 1;
+            }
+            if (parseInt(a._id, 16) > parseInt(b._id, 16)) {
+              return -1;
+            }
+            return 0;
+          })
+        ]
+      };
+    case REMOVE_SORT:
+      return {
+        ...state,
+        sortBy: action.payload,
+        notes: [
+          ...state.notes.sort((a, b) => {
+            if (parseInt(a._id, 16) < parseInt(b._id, 16)) {
+              return -1;
+            }
+            if (parseInt(a._id, 16) > parseInt(b._id, 16)) {
+              return 1;
+            }
+            return 0;
+          })
+        ]
       };
     case ERROR:
       return {

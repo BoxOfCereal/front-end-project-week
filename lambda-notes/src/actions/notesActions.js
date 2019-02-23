@@ -14,6 +14,12 @@ export const SHOW_DELETE_MODAL = "SHOW_DELETE_MODAL";
 export const HIDE_DELETE_MODAL = "HIDE_DELETE_MODAL";
 export const UPDATE_SEARCH_TERM = "UPDATE_SEARCH_TERM";
 
+export const SORT_BY_TITLE_A_TO_Z = "SORT_BY_TITLE_A_TO_Z";
+export const SORT_BY_TITLE_Z_TO_A = "SORT_BY_TITLE_Z_TO_A";
+export const SORT_BY_TITLE_NEWEST = "SORT_BY_TITLE_NEWEST";
+export const SORT_BY_TITLE_OLDEST = "SORT_BY_TITLE_OLDEST";
+export const REMOVE_SORT = "REMOVE_SORT";
+
 export const ERROR = "ERROR";
 
 // a `GET` request to this route will return a list of all the notes.
@@ -121,5 +127,40 @@ export function setSearchTerm(s) {
   return {
     type: UPDATE_SEARCH_TERM,
     payload: s
+  };
+}
+
+export function sortByTitleAToZ() {
+  return {
+    type: SORT_BY_TITLE_A_TO_Z,
+    payload: "a-z"
+  };
+}
+
+export function sortByTitleZToA() {
+  return {
+    type: SORT_BY_TITLE_Z_TO_A,
+    payload: "z-a"
+  };
+}
+
+export function sortByTitleNewest() {
+  return {
+    type: SORT_BY_TITLE_NEWEST,
+    payload: "newest"
+  };
+}
+
+export function sortByTitleOldest() {
+  return {
+    type: SORT_BY_TITLE_OLDEST,
+    payload: "oldest"
+  };
+}
+
+export function removeSort() {
+  return {
+    type: REMOVE_SORT,
+    payload: "default"
   };
 }
