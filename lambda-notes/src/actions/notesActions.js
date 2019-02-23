@@ -12,6 +12,7 @@ export const DELETING_NOTE = "DELETING_NOTE";
 export const NOTE_DELETED = "NOTE_DELETED";
 export const SHOW_DELETE_MODAL = "SHOW_DELETE_MODAL";
 export const HIDE_DELETE_MODAL = "HIDE_DELETE_MODAL";
+export const UPDATE_SEARCH_TERM = "UPDATE_SEARCH_TERM";
 
 export const ERROR = "ERROR";
 
@@ -112,5 +113,13 @@ export function displayDeleteModal() {
 export function hideDeleteModal() {
   return {
     type: HIDE_DELETE_MODAL
+  };
+}
+
+//sets the search term for the notes search
+export function setSearchTerm(s) {
+  return {
+    type: UPDATE_SEARCH_TERM,
+    payload: s
   };
 }

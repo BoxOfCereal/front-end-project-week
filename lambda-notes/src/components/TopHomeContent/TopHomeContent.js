@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { StyledInput, ButtonThatLooksLikeALink } from "../../styles";
+import { setSearchTerm } from "../../actions";
 
 const TopHomeContent = props => {
   const [value, setValue] = useState("");
@@ -13,6 +15,7 @@ const TopHomeContent = props => {
         placeholder="Search?"
         onChange={event => {
           setValue(event.target.value);
+          props.setSearchTerm(event.target.value);
         }}
         value={value}
       />
@@ -26,4 +29,7 @@ const TopHomeContent = props => {
   );
 };
 
-export default TopHomeContent;
+export default connect(
+  null,
+  { setSearchTerm }
+)(TopHomeContent);

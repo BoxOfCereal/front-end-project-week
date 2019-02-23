@@ -11,6 +11,7 @@ import {
   NOTE_DELETED,
   SHOW_DELETE_MODAL,
   HIDE_DELETE_MODAL,
+  UPDATE_SEARCH_TERM,
   ERROR
 } from "../actions";
 
@@ -31,7 +32,8 @@ const initialState = {
     title: "",
     textBody: ""
   },
-  showDeleteModal: false
+  showDeleteModal: false,
+  searchTerm: ""
 };
 
 function setAllFalse(state) {
@@ -130,6 +132,11 @@ export const notesReducer = (state = initialState, action) => {
       return {
         ...state,
         showDeleteModal: false
+      };
+    case UPDATE_SEARCH_TERM:
+      return {
+        ...state,
+        searchTerm: action.payload
       };
     case ERROR:
       return {
