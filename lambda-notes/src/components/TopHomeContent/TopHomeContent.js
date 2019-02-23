@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { StyledInput, ButtonThatLooksLikeALink } from "../../styles";
-import { setSearchTerm } from "../../actions";
+import {
+  setSearchTerm,
+  sortByTitleAToZ,
+  sortByTitleZToA,
+  sortByTitleNewest,
+  sortByTitleOldest,
+  removeSort
+} from "../../actions";
 
 const TopHomeContent = props => {
   const [value, setValue] = useState("");
@@ -11,14 +18,32 @@ const TopHomeContent = props => {
       {console.log(value)}
       <h2>Your Notes:</h2>
 
-      <StyledInput
-        placeholder="Search?"
-        onChange={event => {
-          setValue(event.target.value);
-          props.setSearchTerm(event.target.value);
-        }}
-        value={value}
-      />
+      <div style={{ margin: "0 auto" }}>
+        <StyledInput
+          placeholder="Search?"
+          onChange={event => {
+            setValue(event.target.value);
+            props.setSearchTerm(event.target.value);
+          }}
+          value={value}
+        />
+        <p>Sort By: </p>
+        <ButtonThatLooksLikeALink onClick={props.sortByTitleAToZ}>
+          a-z
+        </ButtonThatLooksLikeALink>
+        <ButtonThatLooksLikeALink onClick={props.sortByTitleZToA}>
+          z-a
+        </ButtonThatLooksLikeALink>
+        <ButtonThatLooksLikeALink onClick={props.sortByTitleNewest}>
+          newest
+        </ButtonThatLooksLikeALink>
+        <ButtonThatLooksLikeALink onClick={props.sortByTitleOldest}>
+          oldest
+        </ButtonThatLooksLikeALink>
+        <ButtonThatLooksLikeALink onClick={props.removeSort}>
+          default
+        </ButtonThatLooksLikeALink>
+      </div>
 
       <div>
         <ButtonThatLooksLikeALink onClick={props.logout}>
@@ -31,5 +56,12 @@ const TopHomeContent = props => {
 
 export default connect(
   null,
-  { setSearchTerm }
+  {
+    setSearchTerm,
+    sortByTitleAToZ,
+    sortByTitleZToA,
+    sortByTitleNewest,
+    sortByTitleOldest,
+    removeSort
+  }
 )(TopHomeContent);

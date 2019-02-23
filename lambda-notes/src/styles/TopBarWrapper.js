@@ -25,9 +25,6 @@ const TopBarWrapper = styled.div`
     padding: 1px 6px;
   }
 
-  & input {
-    margin: 0 auto;
-  }
   & div:last-of-type {
     background-color: red;
     margin-right: 200px;
