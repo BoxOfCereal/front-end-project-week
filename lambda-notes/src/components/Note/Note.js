@@ -29,7 +29,11 @@ class Note extends React.Component {
     console.log(this.props);
     return (
       <NoteWrapper>
-        <p>{this.props && this.props.note && this.props.note.textBody}</p>
+        <p>
+          {this.props && this.props.note && this.props.note.textBody
+            ? this.props.note.textBody
+            : "Note not found 🤦‍📜"}
+        </p>
       </NoteWrapper>
     );
   }
