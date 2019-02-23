@@ -17,6 +17,8 @@ import {
 const TopHomeContent = props => {
   const [value, setValue] = useState("");
 
+  //on mount clear searc
+  //zindex of modal
   return (
     <>
       {console.log(value)}

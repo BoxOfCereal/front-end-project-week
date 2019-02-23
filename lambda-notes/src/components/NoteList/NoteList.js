@@ -12,7 +12,7 @@ const NoteList = props => {
     <NoteCardsWrapper>
       {props.notes
         .filter(n => {
-          return n.title.match(re);
+          return n && n.title && n.title.match(re);
         })
         .map(note => (
           <NoteCard key={note._id} {...note} />
