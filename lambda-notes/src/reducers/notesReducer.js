@@ -17,6 +17,8 @@ import {
   SORT_BY_TITLE_NEWEST,
   SORT_BY_TITLE_OLDEST,
   REMOVE_SORT,
+  EXPORTING_NOTES_TO_CSV,
+  EXPORTED_NOTES_TO_CSV,
   ERROR
 } from "../actions";
 
@@ -39,7 +41,10 @@ const initialState = {
   },
   showDeleteModal: false,
   searchTerm: "",
-  sortBy: ""
+  sortBy: "",
+  exportingNotesToCsv: false,
+  exportedNotesToCsv: false,
+  csvBlob: null
 };
 
 function setAllFalse(state) {
@@ -224,6 +229,20 @@ export const notesReducer = (state = initialState, action) => {
             return 0;
           })
         ]
+      };
+    case EXPORTING_NOTES_TO_CSV:
+      return {
+        ...state,
+        exportingNotesToCsv: true,
+        exportedNotesToCsv: false,
+        csvBlob: null
+      };
+    case EXPORTED_NOTES_TO_CSV:
+      return {
+        ...state,
+        exportingNotesToCsv: false,
+        exportedNotesToCsv: true,
+        csvBlob: action.payload
       };
     case ERROR:
       return {

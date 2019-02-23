@@ -20,6 +20,9 @@ export const SORT_BY_TITLE_NEWEST = "SORT_BY_TITLE_NEWEST";
 export const SORT_BY_TITLE_OLDEST = "SORT_BY_TITLE_OLDEST";
 export const REMOVE_SORT = "REMOVE_SORT";
 
+export const EXPORTING_NOTES_TO_CSV = "EXPORTING_NOTES_TO_CSV";
+export const EXPORTED_NOTES_TO_CSV = "EXPORT_NOTES_TO_CSV";
+
 export const ERROR = "ERROR";
 
 // a `GET` request to this route will return a list of all the notes.
@@ -162,5 +165,43 @@ export function removeSort() {
   return {
     type: REMOVE_SORT,
     payload: "default"
+  };
+}
+
+//  adapted from https://stackoverflow.com/a/31536517
+const convertNotesToCSV = objArr => {
+  const json = objArr;
+  const header = Object.keys(json[0]);
+  const replacer = function(key, value) {
+    if (value === null) return "";
+    if (Array.isArray(value)) return value.join(" ");
+    return value;
+  };
+  /*
+    for each item or row inside the JSON
+    we want to map over the potential header that they'll have
+    and get a string of version of the  field name or key
+    at that row. The replacer will be used to handle edge cases
+  */
+  const csv = json.map(row =>
+    header.map(fieldName => JSON.stringify(row[fieldName], replacer))
+  );
+  csv.unshift(header.join(","));
+  const csvText = csv.join("\r\n");
+  return csvText;
+};
+
+/*it was suggested to use thunk to get the current state
+  and I wanna do this instead of making a server call
+  because I want what is downloaded reflect what the client sees
+*/
+export function exportNotesToCSV() {
+  return (dispatch, getState) => {
+    const { notes } = getState().notesReducer;
+    dispatch({ type: EXPORTING_NOTES_TO_CSV });
+    const blob = new Blob(["\ufeff", convertNotesToCSV(notes)], {
+      type: "text/csv"
+    });
+    dispatch({ type: EXPORTED_NOTES_TO_CSV, payload: blob });
   };
 }
