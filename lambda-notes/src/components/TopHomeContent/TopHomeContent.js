@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { StyledInput, ButtonThatLooksLikeALink } from "../../styles";
+import {
+  StyledInput,
+  ButtonThatLooksLikeALink,
+  SearchBarWrapper
+} from "../../styles";
 import {
   setSearchTerm,
   sortByTitleAToZ,
@@ -18,7 +22,7 @@ const TopHomeContent = props => {
       {console.log(value)}
       <h2>Your Notes:</h2>
 
-      <div style={{ margin: "0 auto" }}>
+      <SearchBarWrapper>
         <StyledInput
           placeholder="Search?"
           onChange={event => {
@@ -43,7 +47,7 @@ const TopHomeContent = props => {
         <ButtonThatLooksLikeALink onClick={props.removeSort}>
           default
         </ButtonThatLooksLikeALink>
-      </div>
+      </SearchBarWrapper>
 
       <div>
         <ButtonThatLooksLikeALink onClick={props.logout}>
